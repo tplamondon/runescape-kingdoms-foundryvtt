@@ -4,18 +4,21 @@
   "description": "The Runescape Kingdoms system for FoundryVTT!",
   "authors": [
     {
-      "name": "Asacolips",
+      "name": "Thomas Plamondon"
+    },
+    {
+      "name": "Asacolips - Boilerplate",
       "discord": "asacolips"
     },
     {
-      "name": "Lee Talman",
+      "name": "Lee Talman - Boilerplate",
       "discord": ".pizzaWizard"
     }
   ],
-  "url": "Replace this with a link to your public repository",
+  "url": "https://github.com/tplamondon/runescape-kingdoms-foundryvtt",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "Replace this with a link to file issues or tickets",
+  "bugs": "https://github.com/tplamondon/runescape-kingdoms-foundryvtt/issues",
   "changelog": "CHANGELOG.md",
   "media": [
     {
@@ -24,10 +27,10 @@
       "thumbnail": "systems/runescape-kingdoms/assets/anvil-impact.png"
     }
   ],
-  "version": "2.0.0",
+  "version": "0.2.0",
   "compatibility": {
-    "minimum": 11,
-    "verified": "11.315"
+    "minimum": 12,
+    "verified": "12.331"
   },
   "esmodules": ["module/runescape-kingdoms.mjs"],
   "styles": ["css/runescape-kingdoms.css"],
@@ -41,11 +44,11 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
-  "download": "This must link to a .zip file of the current version",
+  "manifest": "https://raw.githubusercontent.com/tplamondon/runescape-kingdoms-foundryvtt/refs/heads/master/system.json",
+  "download": "https://github.com/tplamondon/runescape-kingdoms-foundryvtt/releases/download/release-0.2.0/runescape-kingdoms-0.2.0.zip",
   "background": "systems/runescape-kingdoms/assets/anvil-impact.png",
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "gridDistance": 1,
+  "gridUnits": "m",
   "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power"
+  "secondaryTokenAttribute": null
 }
