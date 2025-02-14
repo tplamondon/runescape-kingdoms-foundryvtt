@@ -5,9 +5,34 @@
       "Agi": { "long": "Agility", "abbr": "agi" },
       "Int": { "long": "Intellect", "abbr": "int" }
     },
+    "Skill": {
+      "Arch": { "long": "Archeology", "abbr": "arch"},
+      "Atk": { "long": "Attack", "abbr": "atk"},
+      "Cook": { "long": "Cooking", "abbr": "cook"},
+      "Crft": { "long": "Crafting", "abbr": "crft"},
+      "Def": { "long": "Defence", "abbr": "def"},
+      "Dung": { "long": "Dungeoneering", "abbr": "dung"},
+      "Farm": { "long": "Farming", "abbr": "farm"},
+      "Fish": { "long": "Fishing", "abbr": "fish"},
+      "Flch": { "long": "Fletching", "abbr": "flch"},
+      "Herb": { "long": "Herblore", "abbr": "her"},
+      "Hnt": { "long": "Hunter", "abbr": "hnt"},
+      "Mgk": { "long": "Magic", "abbr": "mgk"},
+      "Min": { "long": "Mining", "abbr": "min"},
+      "Pray": { "long": "Prayer", "abbr": "pray"},
+      "Rng": { "long": "Ranged", "abbr": "rng"},
+      "Rc": { "long": "Runecrafting", "abbr": "rc"},
+      "Slay": { "long": "Slayer", "abbr": "slay"},
+      "Smth": { "long": "Smithing", "abbr": "smth"},
+      "Sum": { "long": "Summoning", "abbr": "sum"},
+      "Thv": { "long": "Thieving", "abbr": "thv"},
+      "Wc": { "long": "Woodcutting", "abbr": "wc"}
+    },
     "SheetLabels": {
       "Actor": "RunescapeKingdoms Actor Sheet",
-      "Item": "RunescapeKingdoms Item Sheet"
+      "Item": "RunescapeKingdoms Item Sheet",
+      "Attribute": "Attribute",
+      "Skill": "Skill"
     },
     "Item": {
       "Spell": {
@@ -21,8 +46,13 @@
       "Temporary": "Temporary Effects",
       "Passive": "Passive Effects",
       "Inactive": "Inactive Effects"
+    },
+    "Rolls": {
+      "SkillCheck": "Skill Check",
+      "AttributeCheck": "Attribute Check"
     }
   },
+  
 
   "TYPES": {
     "Actor": {
