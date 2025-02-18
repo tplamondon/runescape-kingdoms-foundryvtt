@@ -10,6 +10,10 @@ RUNESCAPE_KINGDOMS.abilities = {
   int: "RUNESCAPE_KINGDOMS.Ability.Int.long",
 };
 
+RUNESCAPE_KINGDOMS.others = {
+  hp: "RUNESCAPE_KINGDOMS.Other.Hp.long",
+};
+
 RUNESCAPE_KINGDOMS.abilityAbbreviations = {
   str: "RUNESCAPE_KINGDOMS.Ability.Str.abbr",
   dex: "RUNESCAPE_KINGDOMS.Ability.Agi.abbr",

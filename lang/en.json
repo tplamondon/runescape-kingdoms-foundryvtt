@@ -5,6 +5,9 @@
       "Agi": { "long": "Agility", "abbr": "agi" },
       "Int": { "long": "Intellect", "abbr": "int" }
     },
+    "Other": {
+      "Hp": { "long": "Life Points", "abbr": "hp"}
+    },
     "Skill": {
       "Arch": { "long": "Archeology", "abbr": "arch"},
       "Atk": { "long": "Attack", "abbr": "atk"},

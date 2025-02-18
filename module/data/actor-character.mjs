@@ -37,11 +37,15 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
     return schema;
   }
 
+  // this function is called whenever the sheet is updated as well it seems
   prepareDerivedData() {
+    let hpMax = 0;
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (const key in this.abilities) {
       // Calculate the modifier using just the value
       this.abilities[key].mod = this.abilities[key].value;
+      // add to hpMax
+      hpMax += this.abilities[key].value;
       // Handle ability label localisation.
       this.abilities[key].label =
         game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.abilities[key]) ?? key;
@@ -49,9 +53,15 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
     for (const key in this.skills) {
       // Calculate the modifier using just the value
       this.skills[key].mod = this.skills[key].value;
+      // add to hpmax
+      hpMax += this.skills[key].value;
       // Handle skill label localisation
       game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.skills[key]) ?? key;
     }
+
+    // adjust health
+    // max health should be attribute total + skill total for charactors
+    this.health.max = hpMax;
   }
 
   getRollData() {
