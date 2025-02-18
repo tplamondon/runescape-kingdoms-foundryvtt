@@ -1,6 +1,6 @@
 {
   "RUNESCAPE_KINGDOMS": {
-    "Ability": {
+    "Attribute": {
       "Str": { "long": "Strength", "abbr": "str" },
       "Agi": { "long": "Agility", "abbr": "agi" },
       "Int": { "long": "Intellect", "abbr": "int" }

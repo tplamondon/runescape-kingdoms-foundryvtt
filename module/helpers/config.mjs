@@ -1,23 +1,23 @@
 export const RUNESCAPE_KINGDOMS = {};
 
 /**
- * The set of Ability Scores used within the system.
+ * The set of Attribute Scores used within the system.
  * @type {Object}
  */
-RUNESCAPE_KINGDOMS.abilities = {
-  str: "RUNESCAPE_KINGDOMS.Ability.Str.long",
-  agi: "RUNESCAPE_KINGDOMS.Ability.Agi.long",
-  int: "RUNESCAPE_KINGDOMS.Ability.Int.long",
+RUNESCAPE_KINGDOMS.attributes = {
+  str: "RUNESCAPE_KINGDOMS.Attribute.Str.long",
+  agi: "RUNESCAPE_KINGDOMS.Attribute.Agi.long",
+  int: "RUNESCAPE_KINGDOMS.Attribute.Int.long",
+};
+
+RUNESCAPE_KINGDOMS.attributeAbbreviations = {
+  str: "RUNESCAPE_KINGDOMS.Attribute.Str.abbr",
+  dex: "RUNESCAPE_KINGDOMS.Attribute.Agi.abbr",
+  int: "RUNESCAPE_KINGDOMS.Attribute.Int.abbr",
 };
 
 RUNESCAPE_KINGDOMS.others = {
   hp: "RUNESCAPE_KINGDOMS.Other.Hp.long",
-};
-
-RUNESCAPE_KINGDOMS.abilityAbbreviations = {
-  str: "RUNESCAPE_KINGDOMS.Ability.Str.abbr",
-  dex: "RUNESCAPE_KINGDOMS.Ability.Agi.abbr",
-  int: "RUNESCAPE_KINGDOMS.Ability.Int.abbr",
 };
 
 RUNESCAPE_KINGDOMS.skills = {

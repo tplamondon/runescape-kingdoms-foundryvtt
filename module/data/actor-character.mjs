@@ -8,16 +8,10 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
     const skillInteger = { initial: 1, min: 1, max: 10 };
     const schema = super.defineSchema();
 
-    schema.attributes = new fields.SchemaField({
-      level: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 1 }),
-      }),
-    });
-
-    // Iterate over ability names and create a new SchemaField for each.
-    schema.abilities = new fields.SchemaField(
-      Object.keys(CONFIG.RUNESCAPE_KINGDOMS.abilities).reduce((obj, ability) => {
-        obj[ability] = new fields.SchemaField({
+    // Iterate over attribute names and create a new SchemaField for each.
+    schema.attributes = new fields.SchemaField(
+      Object.keys(CONFIG.RUNESCAPE_KINGDOMS.attributes).reduce((obj, attribute) => {
+        obj[attribute] = new fields.SchemaField({
           value: new fields.NumberField({ ...requiredInteger, ...attributeInteger }),
         });
         return obj;
@@ -40,14 +34,14 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
   // this function is called whenever the sheet is updated as well it seems
   prepareDerivedData() {
     let hpMax = 0;
-    // Loop through ability scores, and add stuff to our sheet output such as label
+    // Loop through attributes scores, and add stuff to our sheet output such as label
     // not going to use mod (.mod) as this game doesn't have that like DnD, and it would just be the value anyways
-    for (const key in this.abilities) {
+    for (const key in this.attributes) {
       // add to hpMax
-      hpMax += this.abilities[key].value;
-      // Handle ability label localisation.
-      this.abilities[key].label =
-        game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.abilities[key]) ?? key;
+      hpMax += this.attributes[key].value;
+      // Handle attributes label localisation.
+      this.attributes[key].label =
+        game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.attributes[key]) ?? key;
     }
     for (const key in this.skills) {
       // add to hpmax
@@ -64,10 +58,10 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
   getRollData() {
     const data = {};
 
-    // Copy the ability scores to the top level, so that rolls can use
+    // Copy the attributes scores to the top level, so that rolls can use
     // formulas like `@str.value + 4`.
-    if (this.abilities) {
-      for (let [k, v] of Object.entries(this.abilities)) {
+    if (this.attributes) {
+      for (let [k, v] of Object.entries(this.attributes)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }
@@ -76,8 +70,6 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
         data[k] = foundry.utils.deepClone(v);
       }
     }
-
-    data.lvl = this.attributes.level.value;
 
     return data;
   }
