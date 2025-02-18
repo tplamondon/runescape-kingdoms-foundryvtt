@@ -13,7 +13,7 @@ export default class RunescapeKingdomsItem extends RunescapeKingdomsItemBase {
     schema.roll = new fields.SchemaField({
       diceNum: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       diceSize: new fields.StringField({ initial: "3d6" }),
-      // diceBonus: new fields.StringField({ initial: "+@str.mod+ceil(@lvl / 2)" }),
+      // diceBonus: new fields.StringField({ initial: "+@str.value+ceil(@lvl / 2)" }),
       diceBonus: new fields.StringField({ initial: "" }),
     });
 

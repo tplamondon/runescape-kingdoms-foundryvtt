@@ -31,7 +31,7 @@ Hooks.once("init", function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: "3d6 + @abilities.agi.mod",
+    formula: "3d6 + @abilities.agi.value",
     decimals: 2,
   };
 

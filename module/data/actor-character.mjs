@@ -40,10 +40,9 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
   // this function is called whenever the sheet is updated as well it seems
   prepareDerivedData() {
     let hpMax = 0;
-    // Loop through ability scores, and add their modifiers to our sheet output.
+    // Loop through ability scores, and add stuff to our sheet output such as label
+    // not going to use mod (.mod) as this game doesn't have that like DnD, and it would just be the value anyways
     for (const key in this.abilities) {
-      // Calculate the modifier using just the value
-      this.abilities[key].mod = this.abilities[key].value;
       // add to hpMax
       hpMax += this.abilities[key].value;
       // Handle ability label localisation.
@@ -51,8 +50,6 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
         game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.abilities[key]) ?? key;
     }
     for (const key in this.skills) {
-      // Calculate the modifier using just the value
-      this.skills[key].mod = this.skills[key].value;
       // add to hpmax
       hpMax += this.skills[key].value;
       // Handle skill label localisation
@@ -68,7 +65,7 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
     const data = {};
 
     // Copy the ability scores to the top level, so that rolls can use
-    // formulas like `@str.mod + 4`.
+    // formulas like `@str.value + 4`.
     if (this.abilities) {
       for (let [k, v] of Object.entries(this.abilities)) {
         data[k] = foundry.utils.deepClone(v);
