@@ -6,7 +6,9 @@
       "Int": { "long": "Intellect", "abbr": "int" }
     },
     "Other": {
-      "Hp": { "long": "Life Points", "abbr": "hp"}
+      "Hp": { "long": "Life Points", "abbr": "hp"},
+      "Sp": { "long": "Summoning Points", "abbr": "sp"},
+      "Pp": { "long": "Prayer Points", "abbr": "pp"}
     },
     "Skill": {
       "Arch": { "long": "Archeology", "abbr": "arch"},

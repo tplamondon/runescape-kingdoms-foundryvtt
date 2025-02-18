@@ -18,6 +18,18 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
       }, {})
     );
 
+    // max is prayer skill * 3
+    schema.prayerPoints = new fields.SchemaField({
+      value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      max: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3, max: 30 }),
+    });
+
+    // max is summoning skill * 5
+    schema.summoningPoints = new fields.SchemaField({
+      value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      max: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5, max: 50 }),
+    });
+
     //iterate over skill names and create a new SchemaField for each
     schema.skills = new fields.SchemaField(
       Object.keys(CONFIG.RUNESCAPE_KINGDOMS.skills).reduce((obj, skill) => {
@@ -58,6 +70,12 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
     // adjust health
     // max health should be attribute total + skill total for charactors
     this.health.max = hpMax;
+
+    // adjust prayer
+    this.prayerPoints.max = this.skills.pray.value * 3;
+
+    // adjust summoning
+    this.summoningPoints.max = this.skills.sum.value * 5;
   }
 
   getRollData() {

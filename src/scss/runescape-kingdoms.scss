@@ -1,21 +1,30 @@
+/* Styles limited to runescape-kingdoms sheets */
+@forward 'components/forms';
+@forward 'components/resource';
+@forward 'components/items';
+@forward 'components/effects';
+
+// Import utilities.
+@forward 'utils/typography';
+@forward 'utils/colors';
+@forward 'utils/mixins';
+@forward 'utils/variables';
+
+/* Global styles */
+@forward 'global/window';
+@forward 'global/grid';
+@forward 'global/flex';
+
 // Add custom fonts by visiting and search https://fonts.google.com
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-// Import utilities.
-@import 'utils/typography';
-@import 'utils/colors';
-@import 'utils/mixins';
-@import 'utils/variables';
 
-/* Global styles */
-@import 'global/window';
-@import 'global/grid';
-@import 'global/flex';
+
 
 /* Styles limited to runescape-kingdoms sheets */
-.runescape-kingdoms {
-  @import 'components/forms';
-  @import 'components/resource';
-  @import 'components/items';
-  @import 'components/effects';
-}
+// .runescape-kingdoms {
+//   @import 'components/forms';
+//   @import 'components/resource';
+//   @import 'components/items';
+//   @import 'components/effects';
+// }

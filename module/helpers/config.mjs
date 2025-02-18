@@ -18,6 +18,8 @@ RUNESCAPE_KINGDOMS.attributeAbbreviations = {
 
 RUNESCAPE_KINGDOMS.others = {
   hp: "RUNESCAPE_KINGDOMS.Other.Hp.long",
+  sp: "RUNESCAPE_KINGDOMS.Other.Sp.long",
+  pp: "RUNESCAPE_KINGDOMS.Other.Pp.long",
 };
 
 RUNESCAPE_KINGDOMS.skills = {

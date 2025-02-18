@@ -1,5 +1,7 @@
+@use "../utils/index.scss" as utils;
+
 .window-app {
-  font-family: $font-primary;
+  font-family: utils.$font-primary;
 }
 
 .rollable {

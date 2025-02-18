@@ -1,3 +1,15 @@
+@use "../utils//colors" as colours;
+
 .resource-label {
   font-weight: bold;
+}
+
+.skills {
+  .skill {
+    // margin: 0.2rem;
+    padding: 0.2rem;
+    border-style: double;
+    border-width: 0.3rem;
+    border-color: colours.$c-dark;
+  }
 }
