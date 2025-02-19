@@ -60,6 +60,11 @@
   border-width: 0.3rem;
   border-color: #191813;
 }
+.skills .skill .skill-number {
+  border-radius: 50%;
+  height: 3em;
+  width: 3em;
+}
 
 .items-header {
   height: 28px;
@@ -186,6 +191,10 @@
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
+}
+
+.actor {
+  min-width: 600px;
 }
 
 .grid,

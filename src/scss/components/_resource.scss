@@ -11,5 +11,10 @@
     border-style: double;
     border-width: 0.3rem;
     border-color: colours.$c-dark;
+    .skill-number{
+      border-radius: 50%;
+      height: 3em;
+      width: 3em;
+    }
   }
 }

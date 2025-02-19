@@ -76,7 +76,10 @@
               <div class="skills">
                 <div class="skill flexrow flex-group-center">
                   <label for="system.skills.{{key}}.value" class="resource-label rollable rollable-skill flexlarge align-left" data-roll="3d6+@skills.{{key}}.value" data-label="{{localize (lookup @root.config.skills key)}}" data-roll-type="skill">{{localize (lookup @root.config.skills key)}}</label>
-                  <input type="text" name="system.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+                  {{!-- span to allow circles to appear --}}
+                  <span> 
+                    <input class="skill-number" type="text" name="system.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+                  </span>
                 </div>
               </div>
             {{/each}}
