@@ -1,4 +1,5 @@
 @use "../utils//colors" as colours;
+@use "sass:math";
 
 .resource-label {
   font-weight: bold;
@@ -16,5 +17,65 @@
       height: 3em;
       width: 3em;
     }
+  }
+}
+
+.attributes {
+  .attribute {
+    .attribute-number-wrap {
+      $fieldSize: 4em;
+      position: relative;
+      height: $fieldSize;
+      .attribute-number{
+        $borderWidth: 5px;
+
+        background: colours.$c-half;
+        // border stuff
+        border: solid;
+        border-color: colours.$c-border-1;
+        border-width: $borderWidth;
+        // sizing
+        height: $fieldSize;
+        width: $fieldSize;
+        overflow: hidden;
+        // making hexagon shape
+        aspect-ratio: 1;
+        --o:calc(50%*tan(-22.5deg));
+        clip-path: polygon(
+          var(--o) 50%,50% var(--o),
+          calc(100% - var(--o)) 50%,
+          50% calc(100% - var(--o))
+        );
+
+        // position this in the middle
+        position: absolute;
+        left: 50%;
+        margin-left: -1* math.div($fieldSize,2);
+
+        &:before {
+          content: "";
+          position: absolute;
+          border: inherit;
+          display: inherit;
+          // rotate
+          rotate: 45deg;
+          // Below must be border width
+          left: -$borderWidth;
+          right: -$borderWidth;
+          top: -$borderWidth;
+          bottom: -$borderWidth;
+        }
+      }
+      .attribute-number-text {
+        position: absolute;
+        left: 50%;
+        margin-left: -1* math.div($fieldSize,2);
+        width: $fieldSize;
+        height: $fieldSize;
+        border: none;
+        background: none;
+      }
+    }
+    
   }
 }

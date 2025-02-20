@@ -66,6 +66,46 @@
   width: 3em;
 }
 
+.attributes .attribute .attribute-number-wrap {
+  position: relative;
+  height: 4em;
+}
+.attributes .attribute .attribute-number-wrap .attribute-number {
+  background: rgba(0, 0, 0, 0.05);
+  border: solid;
+  border-color: #7a7971;
+  border-width: 5px;
+  height: 4em;
+  width: 4em;
+  overflow: hidden;
+  aspect-ratio: 1;
+  --o:calc(50%*tan(-22.5deg));
+  clip-path: polygon(var(--o) 50%, 50% var(--o), calc(100% - var(--o)) 50%, 50% calc(100% - var(--o)));
+  position: absolute;
+  left: 50%;
+  margin-left: -2em;
+}
+.attributes .attribute .attribute-number-wrap .attribute-number:before {
+  content: "";
+  position: absolute;
+  border: inherit;
+  display: inherit;
+  rotate: 45deg;
+  left: -5px;
+  right: -5px;
+  top: -5px;
+  bottom: -5px;
+}
+.attributes .attribute .attribute-number-wrap .attribute-number-text {
+  position: absolute;
+  left: 50%;
+  margin-left: -2em;
+  width: 4em;
+  height: 4em;
+  border: none;
+  background: none;
+}
+
 .items-header {
   height: 28px;
   margin: 2px 0;
