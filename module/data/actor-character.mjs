@@ -40,9 +40,11 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
       }, {})
     );
 
-    // TODO add Place of Origin field
-    // TODO add Catalyst field
-    // TODO add motivation field
+    // equivalent to passing ({initial: ""}) for StringFields
+    schema.placeOfOrigin = new fields.StringField({ required: true, blank: true });
+    schema.catalyst = new fields.StringField({ required: true, blank: true });
+    schema.motivation = new fields.StringField({ required: true, blank: true });
+
     //? Add Background thing to have backgrounds auto add to skills?
 
     return schema;

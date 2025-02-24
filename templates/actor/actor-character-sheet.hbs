@@ -98,9 +98,16 @@
     </div>
 
     {{!-- Biography Tab --}}
-    <div class="tab biography" data-group="primary" data-tab="description">
+    <div class="tab character-description" data-group="primary" data-tab="description">
+      <div class="grid grid-3col">
+        <h3 class="placeOfOrigin charInfo"><input name="placeOfOrigin" type="text" value="{{actor.placeOfOrigin}}" placeholder="Place of Origin"/></h1>
+        <h3 class="catalyst charInfo"><input name="catalyst" type="text" value="{{actor.catalyst}}" placeholder="Catalyst"/></h1>
+        <h3 class="motivation charInfo"><input name="motivation" type="text" value="{{actor.motivation}}" placeholder="Motivation"/></h1>
+      </div>
       {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
-      {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
+      <div class="biography">
+        {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
+      </div>
     </div>
 
     {{!-- Owned Items Tab --}}

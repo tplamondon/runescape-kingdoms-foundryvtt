@@ -50,6 +50,13 @@
   padding: 0 8px;
 }
 
+.border-1 {
+  border-radius: 3px;
+  border: solid;
+  border-color: #7a7971;
+  border-width: 1px;
+}
+
 .resource-label {
   font-weight: bold;
 }
@@ -104,6 +111,20 @@
   height: 4em;
   border: none;
   background: none;
+}
+
+.character-description .biography {
+  height: 15rem;
+}
+.character-description .biography .editor {
+  border-radius: 3px;
+  border: solid;
+  border-color: #7a7971;
+  border-width: 1px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.character-description .charInfo {
+  border: none;
 }
 
 .items-header {

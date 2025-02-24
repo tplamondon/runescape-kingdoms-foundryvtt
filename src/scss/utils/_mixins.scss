@@ -1,3 +1,5 @@
+@use "./colors" as colours;
+
 @mixin element-invisible {
   position: absolute;
 
@@ -13,4 +15,11 @@
 
 @mixin hide {
   display: none;
+}
+
+@mixin border-1{
+  border-radius: 3px;
+  border: solid;
+  border-color: colours.$c-border-1;
+  border-width: 1px;
 }

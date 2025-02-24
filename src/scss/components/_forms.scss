@@ -1,5 +1,6 @@
 @use "../utils/typography" as fonts;
 @use "../utils/colors" as colours;
+@use "../utils/mixins" as mixins;
 
 .item-form {
   font-family: fonts.$font-primary;
@@ -55,4 +56,8 @@
   .tox-edit-area {
     padding: 0 8px;
   }
+}
+
+.border-1{
+    @include mixins.border-1;
 }
