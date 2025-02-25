@@ -105,6 +105,7 @@
         <h3 class="motivation charInfo"><input name="motivation" type="text" value="{{actor.motivation}}" placeholder="Motivation"/></h1>
       </div>
       {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
+      <h3>{{localize "RUNESCAPE_KINGDOMS.SheetLabels.Biography"}}</h3>
       <div class="biography">
         {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
       </div>

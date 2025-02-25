@@ -37,7 +37,8 @@
       "Actor": "RunescapeKingdoms Actor Sheet",
       "Item": "RunescapeKingdoms Item Sheet",
       "Attribute": "Attribute",
-      "Skill": "Skill"
+      "Skill": "Skill",
+      "Biography": "Biography"
     },
     "Item": {
       "Spell": {
