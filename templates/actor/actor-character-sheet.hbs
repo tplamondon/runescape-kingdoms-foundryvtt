@@ -45,7 +45,7 @@
       <div class="attributes grid grid-3col">
         {{#each system.attributes as |attribute key|}}
         <div class="attribute flex-group-center">
-            <label for="system.attributes.{{key}}.value" class="resource-label rollable rollable-attribute" data-roll="3d6+@attributes.{{key}}.value" data-label="{{localize (lookup @root.config.attributes key)}}" data-roll-type="attribute">{{localize (lookup @root.config.attributes key)}}</label>
+            <label for="system.attributes.{{key}}.value" class="resource-label rollable rollable-attribute" data-roll="3d6" data-label="{{localize (lookup @root.config.attributes key)}}" data-roll-type="attribute">{{localize (lookup @root.config.attributes key)}}</label>
             <div class="resource-content flexrow flex-center flex-between"></div>
             <div class="attribute-number-wrap">
               <div class="attribute-number"></div>
@@ -76,9 +76,9 @@
       <section class="grid grid-3col">
             {{!-- TODO likely will need a selection either here or in roll section for deciding what the attribute to compare is --}}
             {{#each system.skills as |skill key|}}
-              <div class="skills">
+              <div class="skills" id="{{key}}">
                 <div class="skill flexrow flex-group-center">
-                  <label for="system.skills.{{key}}.value" class="resource-label rollable rollable-skill flexlarge align-left" data-roll="3d6+@skills.{{key}}.value" data-label="{{localize (lookup @root.config.skills key)}}" data-roll-type="skill">{{localize (lookup @root.config.skills key)}}</label>
+                  <label for="system.skills.{{key}}.value" class="resource-label rollable rollable-skill flexlarge align-left" data-roll="3d6" data-skill-key="{{key}}" data-label="{{localize (lookup @root.config.skills key)}}" data-roll-type="skill">{{localize (lookup @root.config.skills key)}}</label>
                   {{!-- span to allow circles to appear --}}
                   <span> 
                     <input class="skill-number" type="text" name="system.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>

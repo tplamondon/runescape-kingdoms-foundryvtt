@@ -176,7 +176,8 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     });
 
     // Rollable abilities/skills
-    html.on("click", ".rollable", this._onRoll.bind(this));
+    html.on("click", ".rollable-attribute", this._onRoll.bind(this));
+    html.on("click", ".rollable-skill", this._onRollSkill.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -216,6 +217,56 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     return await Item.create(itemData, { parent: this.actor });
   }
 
+  async _onRollSkill(event) {
+    event.preventDefault();
+
+    const dataset = event.currentTarget.dataset;
+
+    //get the skill key
+    const skillKey = dataset.skillKey;
+
+    let typeLabel = ` ${game.i18n.localize(
+      CONFIG.RUNESCAPE_KINGDOMS.ROLL_TYPES[dataset.rollType]
+    )}`;
+    let label = dataset.label ? `${dataset.label}` : "";
+    let finalLabel = label + typeLabel;
+
+    const skillCheckData = {
+      actor: this.actor,
+      config: CONFIG.RUNESCAPE_KINGDOMS,
+    };
+    const skillCheckContent = await renderTemplate(
+      "systems/runescape-kingdoms/templates/dialogs/skill-check.hbs",
+      skillCheckData
+    );
+
+    // console.log(skillCheckData);
+    const rollDialogue = await foundry.applications.api.DialogV2.wait({
+      window: { title: finalLabel },
+      content: skillCheckContent,
+      modal: true,
+      // This example does not use i18n strings for the button labels,
+      // but they are automatically localized.
+      buttons: [
+        {
+          label: "Advantage",
+          action: "advantage",
+        },
+        {
+          label: "Standard",
+          action: "standard",
+        },
+        {
+          label: "Disadvantage",
+          action: "disadvantage",
+        },
+      ],
+    });
+    //can result returned to rollDialogue. Can also use a function in the action place for fina lresult
+
+    return null;
+  }
+
   /**
    * Handle clickable rolls.
    * @param {Event} event   The originating click event
@@ -238,7 +289,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
       let typeLabel =
-        dataset.rollType === "skill" || dataset.rollType === "attribute"
+        dataset.rollType === "attribute"
           ? ` ${game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.ROLL_TYPES[dataset.rollType])}`
           : "";
       let label = dataset.label ? `${dataset.label}` : "";
