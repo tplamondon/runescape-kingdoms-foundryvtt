@@ -55,7 +55,11 @@
     },
     "Rolls": {
       "SkillCheck": "Skill Check",
-      "AttributeCheck": "Attribute Check"
+      "AttributeCheck": "Attribute Check",
+      "Standard": "Standard",
+      "Advantage": "Advantage",
+      "Disadvantage": "Disadvantage",
+      "Bonus": "Bonus"
     }
   },
   

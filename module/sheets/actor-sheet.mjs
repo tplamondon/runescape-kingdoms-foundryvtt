@@ -226,11 +226,9 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     const skillKey = dataset.skillKey;
 
     //label for the window
-    let typeLabel = ` ${game.i18n.localize(
+    let label = `${dataset.label ?? ""} ${game.i18n.localize(
       CONFIG.RUNESCAPE_KINGDOMS.ROLL_TYPES[dataset.rollType]
     )}`;
-    let label = dataset.label ? `${dataset.label}` : "";
-    let finalLabel = label + typeLabel;
 
     //create the dialogue v2 html
     const skillCheckData = {
@@ -244,7 +242,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
 
     // console.log(skillCheckData);
     const rollDialogue = await foundry.applications.api.DialogV2.wait({
-      window: { title: finalLabel },
+      window: { title: label },
       content: skillCheckContent,
       modal: true,
       // This example does not use i18n strings for the button labels,
@@ -256,7 +254,10 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
           callback: (e, b, d) => {
             return {
               attribute: b.form.elements.chosenAttributeSkillRoll.value,
-              rollType: "advantage",
+              diceRoll: "4d6kl3",
+              bonus: !isNaN(b.form.elements.bonusValue.value)
+                ? Number(b.form.elements.bonusValue.value)
+                : 0,
             };
           },
         },
@@ -266,7 +267,10 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
           callback: (e, b, d) => {
             return {
               attribute: b.form.elements.chosenAttributeSkillRoll.value,
-              rollType: "standard",
+              diceRoll: "3d6",
+              bonus: !isNaN(b.form.elements.bonusValue.value)
+                ? Number(b.form.elements.bonusValue.value)
+                : 0,
             };
           },
         },
@@ -276,17 +280,32 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
           callback: (e, b, d) => {
             return {
               attribute: b.form.elements.chosenAttributeSkillRoll.value,
-              rollType: "disadvantage",
+              diceRoll: "4d6kh3",
+              bonus: !isNaN(b.form.elements.bonusValue.value)
+                ? Number(b.form.elements.bonusValue.value)
+                : 0,
             };
           },
         },
       ],
     });
 
-    //get roll target (roll <= this to pass)
+    console.log(rollDialogue);
+
+    // get roll target (roll <= this to pass)
     const rollTarget =
       this.actor.system.skills[skillKey].value +
       this.actor.system.attributes[rollDialogue.attribute].value;
+
+    // handle roll
+    let roll = new Roll(`${rollDialogue.diceRoll} + @bonus`, { bonus: rollDialogue.bonus });
+    await roll.evaluate();
+    console.log(roll.total);
+
+    roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      flavor: label,
+    });
 
     return null;
   }
