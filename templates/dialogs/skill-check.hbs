@@ -1,5 +1,5 @@
 <form class="flexcol" autocomplete="off">
- <select>
+ <select name="chosenAttributeSkillRoll">
     {{#each actor.system.attributes as |attribute key|}}
         <option value="{{key}}">{{localize (lookup @root.config.attributes key)}}</option>
     {{/each}}

@@ -225,12 +225,14 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     //get the skill key
     const skillKey = dataset.skillKey;
 
+    //label for the window
     let typeLabel = ` ${game.i18n.localize(
       CONFIG.RUNESCAPE_KINGDOMS.ROLL_TYPES[dataset.rollType]
     )}`;
     let label = dataset.label ? `${dataset.label}` : "";
     let finalLabel = label + typeLabel;
 
+    //create the dialogue v2 html
     const skillCheckData = {
       actor: this.actor,
       config: CONFIG.RUNESCAPE_KINGDOMS,
@@ -251,18 +253,40 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
         {
           label: "Advantage",
           action: "advantage",
+          callback: (e, b, d) => {
+            return {
+              attribute: b.form.elements.chosenAttributeSkillRoll.value,
+              rollType: "advantage",
+            };
+          },
         },
         {
           label: "Standard",
           action: "standard",
+          callback: (e, b, d) => {
+            return {
+              attribute: b.form.elements.chosenAttributeSkillRoll.value,
+              rollType: "standard",
+            };
+          },
         },
         {
           label: "Disadvantage",
           action: "disadvantage",
+          callback: (e, b, d) => {
+            return {
+              attribute: b.form.elements.chosenAttributeSkillRoll.value,
+              rollType: "disadvantage",
+            };
+          },
         },
       ],
     });
-    //can result returned to rollDialogue. Can also use a function in the action place for fina lresult
+
+    //get roll target (roll <= this to pass)
+    const rollTarget =
+      this.actor.system.skills[skillKey].value +
+      this.actor.system.attributes[rollDialogue.attribute].value;
 
     return null;
   }
