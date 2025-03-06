@@ -1,0 +1,38 @@
+@use "../utils/colors" as colours;
+
+
+.skill-roll {
+    .success {
+        color: colours.$success;
+    }
+    .fail {
+        color: colours.$fail;
+    }
+
+    .roll-results {
+        $dice-size: 1.3em;
+        .dice-values {
+            background-color: colours.$shade-light;
+            display: flex;
+            align-items: center;
+            padding: 0.3em 0.5em;
+            margin: 0 $dice-size;
+            .dice-value {
+                background-color: colours.$shade-light;
+                font-size: 1.1em;
+
+                margin-left: 0.3em;
+                margin-right: 0.3em;
+                height: $dice-size;
+                width: $dice-size;
+                overflow: hidden;
+
+                text-align: center;
+
+            }
+            .dice-value.discarded {
+                background-color: colours.$shade-dark;
+            }
+        }
+    }
+}

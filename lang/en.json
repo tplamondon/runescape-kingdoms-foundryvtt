@@ -55,12 +55,20 @@
     },
     "Rolls": {
       "SkillCheck": "Skill Check",
-      "AttributeCheck": "Attribute Check",
-      "Standard": "Standard",
-      "Advantage": "Advantage",
-      "Disadvantage": "Disadvantage",
-      "Bonus": "Bonus"
+      "AttributeCheck": "Attribute Check"
     }
+  },
+
+  "Rolls": {
+    "Standard": "Standard",
+    "Advantage": "Advantage",
+    "Disadvantage": "Disadvantage",
+    "Bonus": "Modifier",
+    "Success": "Success",
+    "Fail": "Failure",
+    "Result": "Result",
+    "Roll": "Roll",
+    "Target": "Target"
   },
   
 

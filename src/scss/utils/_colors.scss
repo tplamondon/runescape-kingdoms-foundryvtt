@@ -7,5 +7,11 @@ $c-beige: #b5b3a4;
 $c-tan: #444;
 
 // helps make it darker while being same as colour below element
-$c-half: rgba(0, 0, 0, 0.05);
+$shade-light: rgba(0, 0, 0, 0.05);
+$shade-dark: rgba(0, 0, 0, 0.2);
+
+// borders
 $c-border-1: #7a7971;
+
+$success: #00AF00;
+$fail: #BA0000;

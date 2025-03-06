@@ -1,3 +1,4 @@
+import { skillRollToChat } from "../helpers/chatFunctions.mjs";
 import { onManageActiveEffect, prepareActiveEffectCategories } from "../helpers/effects.mjs";
 
 /**
@@ -249,7 +250,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       // but they are automatically localized.
       buttons: [
         {
-          label: "Advantage",
+          label: game.i18n.localize("Rolls.Advantage"),
           action: "advantage",
           callback: (e, b, d) => {
             return {
@@ -262,7 +263,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
           },
         },
         {
-          label: "Standard",
+          label: game.i18n.localize("Rolls.Standard"),
           action: "standard",
           callback: (e, b, d) => {
             return {
@@ -275,7 +276,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
           },
         },
         {
-          label: "Disadvantage",
+          label: game.i18n.localize("Rolls.Disadvantage"),
           action: "disadvantage",
           callback: (e, b, d) => {
             return {
@@ -290,24 +291,35 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       ],
     });
 
-    console.log(rollDialogue);
-
     // get roll target (roll <= this to pass)
     const rollTarget =
       this.actor.system.skills[skillKey].value +
       this.actor.system.attributes[rollDialogue.attribute].value;
 
     // handle roll
-    let roll = new Roll(`${rollDialogue.diceRoll} + @bonus`, { bonus: rollDialogue.bonus });
-    await roll.evaluate();
-    console.log(roll.total);
-
-    roll.toMessage({
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      flavor: label,
+    let roll = new Roll(`${rollDialogue.diceRoll} + @bonus`, {
+      bonus: rollDialogue.bonus,
+      target: rollTarget,
     });
+    await roll.evaluate();
 
-    return null;
+    console.log(roll.terms.find((c) => (c.class = "Die")).results);
+    let chatData = {
+      // user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      skillName: game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.skills[skillKey]),
+      isSuccess: roll.total <= rollTarget,
+      roll: {
+        result: roll.total,
+        bonus: rollDialogue.bonus,
+        dice: roll.terms.find((c) => (c.class = "Die")).results,
+        target: rollTarget,
+      },
+      attributeKey: rollDialogue.attribute,
+      config: CONFIG.RUNESCAPE_KINGDOMS,
+    };
+
+    skillRollToChat(chatData);
   }
 
   /**

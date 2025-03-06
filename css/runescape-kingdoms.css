@@ -243,6 +243,33 @@
   border: none;
 }
 
+.skill-roll .success {
+  color: #00AF00;
+}
+.skill-roll .fail {
+  color: #BA0000;
+}
+.skill-roll .roll-results .dice-values {
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 0.3em 0.5em;
+  margin: 0 1.3em;
+}
+.skill-roll .roll-results .dice-values .dice-value {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 1.1em;
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+  height: 1.3em;
+  width: 1.3em;
+  overflow: hidden;
+  text-align: center;
+}
+.skill-roll .roll-results .dice-values .dice-value.discarded {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;

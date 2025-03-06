@@ -31,7 +31,7 @@
       .attribute-number{
         $borderWidth: 5px;
 
-        background: colours.$c-half;
+        background: colours.$shade-light;
         // border stuff
         border: solid;
         border-color: colours.$c-border-1;
@@ -88,12 +88,12 @@
     height: 15rem;
     .editor {
       @include mixins.border-1;
-      background-color: colours.$c-half;
+      background-color: colours.$shade-light;
     }
   }
   
   .charInfo{
     border: none;
-    // background-color: colours.$c-half; (this is already done elsewhere apparently?)
+    // background-color: colours.$shade-light; (this is already done elsewhere apparently?)
   }
 }

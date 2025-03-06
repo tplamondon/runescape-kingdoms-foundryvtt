@@ -1,0 +1,27 @@
+<div class="" data-actor-id="{{ownerId}}" {{#if tokenId}} data-token-id="{{tokenId}}"{{/if}}>
+    <div class="skill-roll">
+        <h1>{{skillName}}</h1>
+        {{#if isSuccess}}
+            <h3 class="success">{{localize "Rolls.Success"}}</h3>
+        {{else}}
+            <h3 class="fail">{{localize "Rolls.Fail"}}</h3>
+        {{/if}}
+
+        <div class="roll-results">
+            <p><strong>{{localize "Rolls.Result"}}:</strong> {{roll.result}}</p>
+            <div class="dice-values">
+                {{#each roll.dice as |die|}}
+                    <span class="dice-value {{#unless die.active}}discarded{{/unless}}" >
+                        <span class="dice-text">{{die.result}}</span>
+                    </span>
+                {{/each}}
+            </div>
+        </div>
+        
+        <p><strong>{{localize "Rolls.Target"}}:</strong> {{roll.target}}</p>
+        
+        <p><strong>{{localize "Rolls.Bonus"}}:</strong> {{roll.bonus}}</p>
+
+        <p><strong>{{localize "RUNESCAPE_KINGDOMS.SheetLabels.Attribute"}}:</strong> {{localize (lookup config.attributes attributeKey)}}</p>
+    </div>
+</div>
