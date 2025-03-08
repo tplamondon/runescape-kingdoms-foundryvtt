@@ -255,6 +255,7 @@
   align-items: center;
   padding: 0.3em 0.5em;
   margin: 0 1.3em;
+  justify-content: space-evenly;
 }
 .skill-roll .roll-results .dice-values .dice-value {
   background-color: rgba(0, 0, 0, 0.05);

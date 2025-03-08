@@ -241,7 +241,8 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       skillCheckData
     );
 
-    // console.log(skillCheckData);
+    // TODO instead of using b.form.elements.NAME.value, use new FormDataExtended(button.form).object instead?
+    // https://foundryvtt.wiki/en/development/api/dialogv2
     const rollDialogue = await foundry.applications.api.DialogV2.wait({
       window: { title: label },
       content: skillCheckContent,
@@ -303,9 +304,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     });
     await roll.evaluate();
 
-    console.log(roll.terms.find((c) => (c.class = "Die")).results);
     let chatData = {
-      // user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       skillName: game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.skills[skillKey]),
       isSuccess: roll.total <= rollTarget,
@@ -314,6 +313,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
         bonus: rollDialogue.bonus,
         dice: roll.terms.find((c) => (c.class = "Die")).results,
         target: rollTarget,
+        roll: roll,
       },
       attributeKey: rollDialogue.attribute,
       config: CONFIG.RUNESCAPE_KINGDOMS,
