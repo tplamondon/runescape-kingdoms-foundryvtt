@@ -50,6 +50,7 @@ Hooks.once("init", function () {
     item: models.RunescapeKingdomsItem,
     feature: models.RunescapeKingdomsFeature,
     spell: models.RunescapeKingdomsSpell,
+    prayer: models.RunescapeKingdomsPrayer,
     background: models.RunescapeKingdomsBackground,
   };
 

@@ -50,3 +50,8 @@ RUNESCAPE_KINGDOMS.ROLL_TYPES = {
   attribute: "RUNESCAPE_KINGDOMS.Rolls.AttributeCheck",
   skill: "RUNESCAPE_KINGDOMS.Rolls.SkillCheck",
 };
+
+RUNESCAPE_KINGDOMS.SPELL_TYPES = {
+  utility: "RUNESCAPE_KINGDOMS.Item.Spell.Utility",
+  combat: "RUNESCAPE_KINGDOMS.Item.Spell.Combat",
+};

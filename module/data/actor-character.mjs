@@ -45,8 +45,6 @@ export default class RunescapeKingdomsCharacter extends RunescapeKingdomsActorBa
     schema.catalyst = new fields.StringField({ required: true, blank: true });
     schema.motivation = new fields.StringField({ required: true, blank: true });
 
-    //? Add Background thing to have backgrounds auto add to skills?
-
     return schema;
   }
 

@@ -41,13 +41,10 @@
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
       {{! As you add new fields, add them in here! }}
       <div class='resource'>
-        <label class='resource-label'>Spell Level</label>
-        <input
-          type='text'
-          name='system.spellLevel'
-          value='{{system.spellLevel}}'
-          data-dtype='Number'
-        />
+        <label class='resource-label'>Spell Type</label>
+        <select name='system.spellType'>
+          {{selectOptions @root.spellTypes selected=system.spellType localize=true }}
+        </select>
       </div>
     </div>
   </section>

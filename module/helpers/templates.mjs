@@ -10,6 +10,7 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/runescape-kingdoms/templates/actor/parts/actor-backgrounds.hbs",
     "systems/runescape-kingdoms/templates/actor/parts/actor-items.hbs",
     "systems/runescape-kingdoms/templates/actor/parts/actor-spells.hbs",
+    "systems/runescape-kingdoms/templates/actor/parts/actor-prayers.hbs",
     "systems/runescape-kingdoms/templates/actor/parts/actor-effects.hbs",
     // Item partials
     "systems/runescape-kingdoms/templates/item/parts/item-effects.hbs",

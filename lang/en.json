@@ -43,8 +43,16 @@
     },
     "Item": {
       "Spell": {
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
+        "Combat": "Combat Spell",
+        "Utility": "Utility Spell",
+        "type": {
+          "combat": "Combat Spells",
+          "utility": "Utility Spells"
+        },
+        "add": {
+          "combat": "Add Combat",
+          "utility": "Add Utilitt"
+        }
       }
     },
     "Effect": {
@@ -84,6 +92,7 @@
       "item": "Item",
       "feature": "Feature",
       "spell": "Spell",
+      "prayer": "Prayer",
       "background": "Background"
     }
   }

@@ -102,17 +102,10 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     const features = [];
     const backgrounds = [];
     const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
+      combat: [],
+      utility: [],
     };
+    const prayers = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -131,9 +124,13 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       }
       // Append to spells.
       else if (i.type === "spell") {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
+        if (i.system.spellType != undefined) {
+          spells[i.system.spellType].push(i);
         }
+      }
+      // Append to prayers
+      else if (i.type == "prayer") {
+        prayers.push(i);
       }
     }
 
@@ -141,6 +138,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     context.gear = gear;
     context.features = features;
     context.spells = spells;
+    context.prayers = prayers;
     context.backgrounds = backgrounds;
   }
 
@@ -208,7 +206,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     // Get the type of item to create.
     const type = header.dataset.type;
     // Grab any data associated with this control.
-    const data = duplicate(header.dataset);
+    const data = foundry.utils.duplicate(header.dataset);
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
