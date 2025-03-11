@@ -41,7 +41,41 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
+  "packs": [
+        {
+            "name": "rs-kingdoms-example-module-creatures",
+            "label": "Example Creatures",
+            "path": "./packs/example-compendium/creatures.db",
+            "type": "Actor",
+            "system": "runescape-kingdoms"
+        },
+        {
+            "name": "rs-kingdoms-example-module-items",
+            "label": "Example Items",
+            "path": "./packs/example-compendium/items.db",
+            "type": "Item",
+            "system": "runescape-kingdoms"
+        },
+        {
+          "name": "rs-kingdoms-example-module-backgrounds",
+          "label": "Example Backgrounds",
+          "path": "./packs/example-compendium/backgrounds.db",
+          "type": "Item",
+          "system": "runescape-kingdoms"
+      },
+        {
+            "name": "rs-kingdoms-example-module-journal-entries",
+            "label": "Example Journal Entries",
+            "path": "./packs/example-compendium/journal-entries.db",
+            "type": "JournalEntry"
+        },
+        {
+            "name": "rs-kingdoms-example-module-roll-tables",
+            "label": "Example Roll Tables",
+            "path": "./packs/example-compendium/roll-tables.db",
+            "type": "RollTable"
+        }
+    ],
   "packFolders": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/tplamondon/runescape-kingdoms-foundryvtt/refs/heads/master/system.json",
