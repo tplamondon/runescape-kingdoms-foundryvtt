@@ -50,6 +50,7 @@ Hooks.once("init", function () {
     item: models.RunescapeKingdomsItem,
     feature: models.RunescapeKingdomsFeature,
     spell: models.RunescapeKingdomsSpell,
+    background: models.RunescapeKingdomsBackground,
   };
 
   // Active Effects are never copied to the Actor,

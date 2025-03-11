@@ -38,7 +38,8 @@
       "Item": "RunescapeKingdoms Item Sheet",
       "Attribute": "Attribute",
       "Skill": "Skill",
-      "Biography": "Biography"
+      "Biography": "Biography",
+      "Backgrounds": "Backgrounds"
     },
     "Item": {
       "Spell": {
@@ -80,7 +81,8 @@
     "Item": {
       "item": "Item",
       "feature": "Feature",
-      "spell": "Spell"
+      "spell": "Spell",
+      "background": "Background"
     }
   }
 }

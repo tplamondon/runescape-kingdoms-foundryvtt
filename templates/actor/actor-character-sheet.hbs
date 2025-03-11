@@ -74,7 +74,6 @@
     {{!-- Owned skill Tab --}}
     <div class="tab skills" data-group="primary" data-tab="skills">
       <section class="grid grid-3col">
-            {{!-- TODO likely will need a selection either here or in roll section for deciding what the attribute to compare is --}}
             {{#each system.skills as |skill key|}}
               <div class="skills" id="{{key}}">
                 <div class="skill flexrow flex-group-center">
@@ -86,14 +85,6 @@
                 </div>
               </div>
             {{/each}}
-        
-        {{!-- kept for reference --}}
-        {{!-- For the main features list, span the right two columns --}}
-        {{!-- <section class="main grid-span-2"> --}}
-          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-          {{!-- {{> "systems/runescape-kingdoms/templates/actor/parts/actor-features.hbs"}} --}}
-        {{!-- </section> --}}
-
       </section>
     </div>
 
@@ -104,6 +95,14 @@
         <h3 class="catalyst charInfo"><input name="catalyst" type="text" value="{{actor.catalyst}}" placeholder="Catalyst"/></h1>
         <h3 class="motivation charInfo"><input name="motivation" type="text" value="{{actor.motivation}}" placeholder="Motivation"/></h1>
       </div>
+      <div>
+        <section class="background">
+          <h3>{{localize "RUNESCAPE_KINGDOMS.SheetLabels.Backgrounds"}}</h3>
+          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+          {{> "systems/runescape-kingdoms/templates/actor/parts/actor-backgrounds.hbs"}}
+        </section>
+      </div>
+      
       {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
       <h3>{{localize "RUNESCAPE_KINGDOMS.SheetLabels.Biography"}}</h3>
       <div class="biography">

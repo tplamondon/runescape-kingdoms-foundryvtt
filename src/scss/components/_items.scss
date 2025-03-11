@@ -2,7 +2,8 @@
 
 // Section Header
 .items-header {
-  height: 28px;
+  min-height: 28px;
+  height: auto;
   margin: 2px 0;
   padding: 0;
   align-items: center;
@@ -21,6 +22,8 @@
     // font-size: 16px;
   }
 }
+
+
 
 // -----------------------------------------
 // Items Lists
@@ -96,7 +99,8 @@
 
   // Section Header
   .items-header {
-    height: 28px;
+    min-height: 28px;
+    height: auto;
     margin: 2px 0;
     padding: 0;
     align-items: center;
