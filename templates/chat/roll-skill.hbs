@@ -2,9 +2,17 @@
     <div class="skill-roll">
         <h1>{{skillName}}</h1>
         {{#if isSuccess}}
-            <h3 class="success">{{localize "Rolls.Success"}}</h3>
+            {{#if isCritical}}
+                <h3 class="success">{{localize "Rolls.Critical Success"}}</h3>
+            {{else}}
+                <h3 class="success">{{localize "Rolls.Success"}}</h3>
+            {{/if}}
         {{else}}
-            <h3 class="fail">{{localize "Rolls.Fail"}}</h3>
+            {{#if isCritical}}
+                <h3 class="fail">{{localize "Rolls.Critical Fail"}}</h3>
+            {{else}}
+                <h3 class="fail">{{localize "Rolls.Fail"}}</h3>
+            {{/if}}
         {{/if}}
 
         <div class="roll-results">

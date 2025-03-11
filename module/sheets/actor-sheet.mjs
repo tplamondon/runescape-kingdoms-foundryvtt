@@ -314,6 +314,12 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       skillName: game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.skills[skillKey]),
       isSuccess: roll.total <= rollTarget,
+      // critical if all 3 dice results were the same
+      // get only active die, the check that every active result's valeu is equal to the first one's
+      isCritical: roll.terms
+        .find((c) => (c.class = "Die"))
+        .results.filter((c) => c.active)
+        .every((c, i, a) => c.result == a?.[0]?.result),
       roll: {
         result: roll.total,
         bonus: rollDialogue.bonus,
