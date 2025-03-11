@@ -54,4 +54,5 @@ RUNESCAPE_KINGDOMS.ROLL_TYPES = {
 RUNESCAPE_KINGDOMS.SPELL_TYPES = {
   utility: "RUNESCAPE_KINGDOMS.Item.Spell.Utility",
   combat: "RUNESCAPE_KINGDOMS.Item.Spell.Combat",
+  teleport: "RUNESCAPE_KINGDOMS.Item.Spell.Teleport",
 };

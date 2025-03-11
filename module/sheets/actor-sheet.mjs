@@ -104,6 +104,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     const spells = {
       combat: [],
       utility: [],
+      teleport: [],
     };
     const prayers = [];
 

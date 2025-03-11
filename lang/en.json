@@ -45,13 +45,16 @@
       "Spell": {
         "Combat": "Combat Spell",
         "Utility": "Utility Spell",
+        "Teleport": "Teleport Spell",
         "type": {
           "combat": "Combat Spells",
-          "utility": "Utility Spells"
+          "utility": "Utility Spells",
+          "teleport": "Teleport Spells"
         },
         "add": {
           "combat": "Add Combat",
-          "utility": "Add Utilitt"
+          "utility": "Add Utility",
+          "teleport": "Add Teleport"
         }
       }
     },

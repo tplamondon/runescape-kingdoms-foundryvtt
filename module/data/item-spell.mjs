@@ -9,8 +9,4 @@ export default class RunescapeKingdomsSpell extends RunescapeKingdomsItemBase {
 
     return schema;
   }
-
-  prepareDerivedData() {
-    this.choices = { utility: "utility", combat: "combat" };
-  }
 }
