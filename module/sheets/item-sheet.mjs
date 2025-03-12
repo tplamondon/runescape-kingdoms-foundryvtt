@@ -62,8 +62,6 @@ export class RunescapeKingdomsItemSheet extends ItemSheet {
     // Adding a pointer to CONFIG.RUNESCAPE_KINGDOMS
     context.config = CONFIG.RUNESCAPE_KINGDOMS;
 
-    context.spellTypes = CONFIG.RUNESCAPE_KINGDOMS.SPELL_TYPES;
-
     // Prepare active effects for easier access
     context.effects = prepareActiveEffectCategories(this.item.effects);
 

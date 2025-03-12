@@ -61,6 +61,10 @@
   font-weight: bold;
 }
 
+.spell-resource {
+  margin-bottom: 0.3em;
+}
+
 .skills .skill {
   padding: 0.2rem;
   border-style: double;

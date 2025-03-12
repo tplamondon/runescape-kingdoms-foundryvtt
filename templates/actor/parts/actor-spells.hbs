@@ -18,7 +18,7 @@
     </li>
     {{#each spells as |item id|}}
       <li class='item flexrow' data-item-id='{{item._id}}'>
-        <div class='item-name flexrow'>
+        <div class='item-name flexrow spell rollable rollable-spell' data-item-id='{{item._id}}'>
           <div class='item-image'>
             <a class='rollable' data-roll-type='item'><img
                 src='{{item.img}}'

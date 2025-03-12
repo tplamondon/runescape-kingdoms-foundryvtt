@@ -184,6 +184,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     // Rollable abilities/skills
     html.on("click", ".rollable-attribute", this._onRoll.bind(this));
     html.on("click", ".rollable-skill", this._onRollSkill.bind(this));
+    html.on("click", ".rollable-spell", this._onRollSpell.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -227,6 +228,124 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     event.preventDefault();
 
     const dataset = event.currentTarget.dataset;
+
+    //get the skill key
+    const skillKey = dataset.skillKey;
+
+    //label for the window
+    let label = `${dataset.label ?? ""} ${game.i18n.localize(
+      CONFIG.RUNESCAPE_KINGDOMS.ROLL_TYPES[dataset.rollType]
+    )}`;
+
+    //create the dialogue v2 html
+    const skillCheckData = {
+      actor: this.actor,
+      config: CONFIG.RUNESCAPE_KINGDOMS,
+    };
+    const skillCheckContent = await renderTemplate(
+      "systems/runescape-kingdoms/templates/dialogs/skill-check.hbs",
+      skillCheckData
+    );
+
+    // TODO instead of using b.form.elements.NAME.value, use new FormDataExtended(button.form).object instead?
+    // https://foundryvtt.wiki/en/development/api/dialogv2
+    const rollDialogue = await foundry.applications.api.DialogV2.wait({
+      window: { title: label },
+      content: skillCheckContent,
+      modal: true,
+      // This example does not use i18n strings for the button labels,
+      // but they are automatically localized.
+      buttons: [
+        {
+          label: game.i18n.localize("Rolls.Advantage"),
+          action: "advantage",
+          callback: (e, b, d) => {
+            return {
+              attribute: b.form.elements.chosenAttributeSkillRoll.value,
+              diceRoll: "4d6kl3",
+              bonus: !isNaN(b.form.elements.bonusValue.value)
+                ? Number(b.form.elements.bonusValue.value)
+                : 0,
+            };
+          },
+        },
+        {
+          label: game.i18n.localize("Rolls.Standard"),
+          action: "standard",
+          callback: (e, b, d) => {
+            return {
+              attribute: b.form.elements.chosenAttributeSkillRoll.value,
+              diceRoll: "3d6",
+              bonus: !isNaN(b.form.elements.bonusValue.value)
+                ? Number(b.form.elements.bonusValue.value)
+                : 0,
+            };
+          },
+        },
+        {
+          label: game.i18n.localize("Rolls.Disadvantage"),
+          action: "disadvantage",
+          callback: (e, b, d) => {
+            return {
+              attribute: b.form.elements.chosenAttributeSkillRoll.value,
+              diceRoll: "4d6kh3",
+              bonus: !isNaN(b.form.elements.bonusValue.value)
+                ? Number(b.form.elements.bonusValue.value)
+                : 0,
+            };
+          },
+        },
+      ],
+    });
+
+    // get roll target (roll <= this to pass)
+    const rollTarget =
+      this.actor.system.skills[skillKey].value +
+      this.actor.system.attributes[rollDialogue.attribute].value;
+
+    // handle roll
+    let roll = new Roll(`${rollDialogue.diceRoll} + @bonus`, {
+      bonus: rollDialogue.bonus,
+      target: rollTarget,
+    });
+    await roll.evaluate();
+
+    let chatData = {
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      skillName: game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.skills[skillKey]),
+      isSuccess: roll.total <= rollTarget,
+      // critical if all 3 dice results were the same
+      // get only active die, the check that every active result's valeu is equal to the first one's
+      isCritical: roll.terms
+        .find((c) => (c.class = "Die"))
+        .results.filter((c) => c.active)
+        .every((c, i, a) => c.result == a?.[0]?.result),
+      roll: {
+        result: roll.total,
+        bonus: rollDialogue.bonus,
+        dice: roll.terms.find((c) => (c.class = "Die")).results,
+        target: rollTarget,
+        roll: roll,
+      },
+      attributeKey: rollDialogue.attribute,
+      config: CONFIG.RUNESCAPE_KINGDOMS,
+    };
+
+    skillRollToChat(chatData);
+  }
+
+  async _onRollSpell(event) {
+    event.preventDefault();
+
+    const dataset = event.currentTarget.dataset;
+
+    /**
+     * @type Object
+     * @property {RunescapeKingdomsSpell} system contains all variables from this class and the base class (RunescapeKingdomsItemBase)
+     */
+    const item = this.actor.items.get(dataset.itemId);
+    console.log(item);
+    return;
 
     //get the skill key
     const skillKey = dataset.skillKey;

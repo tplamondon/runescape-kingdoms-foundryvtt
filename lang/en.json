@@ -55,6 +55,13 @@
           "combat": "Add Combat",
           "utility": "Add Utility",
           "teleport": "Add Teleport"
+        },
+        "damage": {
+          "none": "None",
+          "air": "Air",
+          "water": "Water",
+          "earth": "Earth",
+          "fire": "Fire"
         }
       }
     },

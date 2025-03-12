@@ -40,12 +40,32 @@
     {{! Attributes Tab }}
     <div class='tab attributes' data-group='primary' data-tab='attributes'>
       {{! As you add new fields, add them in here! }}
-      <div class='resource'>
+      <div class='resource spell-resource'>
         <label class='resource-label'>Spell Type</label>
         <select name='system.spellType'>
-          {{selectOptions @root.spellTypes selected=system.spellType localize=true }}
+          {{selectOptions @root.config.SPELL_TYPES selected=system.spellType localize=true }}
         </select>
       </div>
+
+      {{#if (equals system.spellType "combat")}}
+      <div class="resource spell-resource spell-damages">
+        <label class='resource-label'>Spell Damage</label>
+        <div class='spell-damages grid grid-4col'>
+        {{#each @root.system.damageTypes as |damageType key|}}
+            <div class="damageType flex-group-center">
+              <label for="damageTypes.{{key}}.value" class="resource-label" data-label="{{localize (lookup @root.config.spellDamage key)}}" data-damage-type="{{key}}">{{localize (lookup @root.config.spellDamage key)}}</label>
+              <div class="resource-content flexrow flex-center flex-between"></div>
+              <div class="damageType-number-wrap">
+                <div class="damageType-number"></div>
+                <input class="damageType-number-text" type="text" name="damageTypes.{{key}}.value" value="{{damageType.value}}" data-dtype="Number" />
+              </div>
+            </div>
+        {{/each}}
+        </div>
+      </div>
+      {{/if}}
+      
+      
     </div>
   </section>
 </form>

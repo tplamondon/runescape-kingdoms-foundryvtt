@@ -56,3 +56,10 @@ RUNESCAPE_KINGDOMS.SPELL_TYPES = {
   combat: "RUNESCAPE_KINGDOMS.Item.Spell.Combat",
   teleport: "RUNESCAPE_KINGDOMS.Item.Spell.Teleport",
 };
+
+RUNESCAPE_KINGDOMS.spellDamage = {
+  air: "RUNESCAPE_KINGDOMS.Item.Spell.damage.air",
+  water: "RUNESCAPE_KINGDOMS.Item.Spell.damage.water",
+  earth: "RUNESCAPE_KINGDOMS.Item.Spell.damage.earth",
+  fire: "RUNESCAPE_KINGDOMS.Item.Spell.damage.fire",
+};
