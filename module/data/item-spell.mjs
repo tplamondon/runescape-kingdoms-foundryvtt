@@ -23,4 +23,9 @@ export default class RunescapeKingdomsSpell extends RunescapeKingdomsItemBase {
 
     return schema;
   }
+
+  prepareDerivedData() {
+    this.hasDamage =
+      this.spellType === "combat" && Object.values(this.damageTypes).some((c) => c.value > 0);
+  }
 }
