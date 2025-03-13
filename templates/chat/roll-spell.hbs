@@ -1,5 +1,27 @@
 <div class="" data-actor-id="{{ownerId}}" {{#if tokenId}} data-token-id="{{tokenId}}"{{/if}}>
     <div class="spell-roll">
-       {{> "systems/runescape-kingdoms/templates/chat/parts/roll-base.hbs"}}
+        {{> "systems/runescape-kingdoms/templates/chat/parts/roll-base.hbs"}}
+        {{!-- TODO input spell damage and description --}}
+
+        <div class="spell-description">
+            {{!-- triple brackets to not escape HTML --}}
+            {{!-- description of the spell --}}
+            {{{extra.spell.system.description}}}
+        </div>
+        {{#if extra.spell.system.hasDamage}}
+            <div class="spell-damages">
+                {{#each extra.spell.system.damageTypes as |damage key| }}
+                    {{log "roll-spells.hbs"}}
+                    {{log damage.value}}
+                    {{log key}}
+                    {{log (greater damage.value 0)}}
+                    {{#if (greater damage.value 0)}}
+                        <div class="spell-damage {{key}}">
+                            {{damage.value}}
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+        {{/if}}
     </div>
 </div>

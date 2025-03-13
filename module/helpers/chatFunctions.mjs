@@ -25,9 +25,10 @@ export function rollToChatRollObject(roll, rollDialogue, rollTarget) {
  * @param {Roll} roll
  * @param {*} rollDialogue
  * @param {Number} rollTarget
+ * @param {Object} extra object with extra information you may wish to include for specific types
  * @returns
  */
-export function createChatData(actor, chatTitle, roll, rollDialogue, rollTarget) {
+export function createChatData(actor, chatTitle, roll, rollDialogue, rollTarget, extra) {
   let chatData = {
     speaker: ChatMessage.getSpeaker({ actor: actor }),
     rollTitle: chatTitle,
@@ -38,6 +39,7 @@ export function createChatData(actor, chatTitle, roll, rollDialogue, rollTarget)
     roll: rollToChatRollObject(roll, rollDialogue, rollTarget),
     attributeKey: rollDialogue.attribute,
     config: CONFIG,
+    extra: extra,
   };
   return chatData;
 }

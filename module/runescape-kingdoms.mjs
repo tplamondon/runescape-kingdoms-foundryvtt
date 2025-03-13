@@ -96,6 +96,10 @@ Handlebars.registerHelper("subtract", function (a, b) {
   return a - b;
 });
 
+Handlebars.registerHelper("greater", function (a, b) {
+  return a > b;
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */

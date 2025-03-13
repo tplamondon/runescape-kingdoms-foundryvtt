@@ -277,6 +277,10 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.spell-roll .spell-description {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;

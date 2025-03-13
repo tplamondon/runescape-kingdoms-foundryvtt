@@ -261,7 +261,8 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.skills[skillKey]),
       roll,
       rollDialogue,
-      rollTarget
+      rollTarget,
+      null
     );
     rollToChat(chatData, "skill");
   }
@@ -276,10 +277,10 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
      * @type Object
      * @property {RunescapeKingdomsSpell} system contains all variables from this class and the base class (RunescapeKingdomsItemBase)
      */
-    const item = this.actor.items.get(dataset.itemId);
+    const spellItem = this.actor.items.get(dataset.itemId);
 
     // create and display new roll dialogue and get the returned values
-    const rollDialogue = await createRollDialogueV2(["int"], item.name);
+    const rollDialogue = await createRollDialogueV2(["int"], spellItem.name);
 
     // get roll target (roll <= this to pass)
     //spell rolls are always magick skill + int attribute
@@ -296,11 +297,15 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
 
     let chatData = createChatData(
       this.actor,
-      game.i18n.localize(item.name), //if we can localise?
+      game.i18n.localize(spellItem.name), //if we can localise?
       roll,
       rollDialogue,
-      rollTarget
+      rollTarget,
+      {
+        spell: spellItem,
+      }
     );
+    console.debug("spell item", spellItem);
 
     rollToChat(chatData, "spell");
   }
