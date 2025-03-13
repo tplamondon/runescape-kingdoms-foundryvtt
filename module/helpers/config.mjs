@@ -12,7 +12,7 @@ RUNESCAPE_KINGDOMS.attributes = {
 
 RUNESCAPE_KINGDOMS.attributeAbbreviations = {
   str: "RUNESCAPE_KINGDOMS.Attribute.Str.abbr",
-  dex: "RUNESCAPE_KINGDOMS.Attribute.Agi.abbr",
+  agi: "RUNESCAPE_KINGDOMS.Attribute.Agi.abbr",
   int: "RUNESCAPE_KINGDOMS.Attribute.Int.abbr",
 };
 
