@@ -1,7 +1,7 @@
 @use "../utils/colors" as colours;
 
 
-.skill-roll {
+.skill-roll, .spell-roll {
     .success {
         color: colours.$success;
     }

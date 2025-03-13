@@ -249,13 +249,13 @@
   border: none;
 }
 
-.skill-roll .success {
+.skill-roll .success, .spell-roll .success {
   color: #00AF00;
 }
-.skill-roll .fail {
+.skill-roll .fail, .spell-roll .fail {
   color: #BA0000;
 }
-.skill-roll .roll-results .dice-values {
+.skill-roll .roll-results .dice-values, .spell-roll .roll-results .dice-values {
   background-color: rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
@@ -263,7 +263,7 @@
   margin: 0 1.3em;
   justify-content: space-evenly;
 }
-.skill-roll .roll-results .dice-values .dice-value {
+.skill-roll .roll-results .dice-values .dice-value, .spell-roll .roll-results .dice-values .dice-value {
   background-color: rgba(0, 0, 0, 0.05);
   font-size: 1.1em;
   margin-left: 0.3em;
@@ -273,7 +273,7 @@
   overflow: hidden;
   text-align: center;
 }
-.skill-roll .roll-results .dice-values .dice-value.discarded {
+.skill-roll .roll-results .dice-values .dice-value.discarded, .spell-roll .roll-results .dice-values .dice-value.discarded {
   background-color: rgba(0, 0, 0, 0.2);
 }
 

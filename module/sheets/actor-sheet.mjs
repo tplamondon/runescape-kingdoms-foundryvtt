@@ -277,7 +277,6 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
      * @property {RunescapeKingdomsSpell} system contains all variables from this class and the base class (RunescapeKingdomsItemBase)
      */
     const item = this.actor.items.get(dataset.itemId);
-    console.debug("item", item);
 
     // create and display new roll dialogue and get the returned values
     const rollDialogue = await createRollDialogueV2(["int"], item.name);

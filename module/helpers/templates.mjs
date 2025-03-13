@@ -14,5 +14,7 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/runescape-kingdoms/templates/actor/parts/actor-effects.hbs",
     // Item partials
     "systems/runescape-kingdoms/templates/item/parts/item-effects.hbs",
+    // chat partials
+    "systems/runescape-kingdoms/templates/chat/parts/roll-base.hbs",
   ]);
 };
