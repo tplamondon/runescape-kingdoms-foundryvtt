@@ -1,6 +1,6 @@
 <div class="" data-actor-id="{{ownerId}}" {{#if tokenId}} data-token-id="{{tokenId}}"{{/if}}>
     <div class="skill-roll">
-        <h1>{{skillName}}</h1>
+        <h1>{{rollTitle}}</h1>
         {{#if isSuccess}}
             {{#if isCritical}}
                 <h3 class="success">{{localize "Rolls.Critical Success"}}</h3>
@@ -15,6 +15,7 @@
             {{/if}}
         {{/if}}
 
+        {{!--? Maybe have result show "TOTAL (DIE_TOTAL + BONUS) ?"  --}}
         <div class="roll-results">
             <p><strong>{{localize "Rolls.Result"}}:</strong> {{roll.result}}</p>
             <div class="dice-values">
@@ -25,11 +26,11 @@
                 {{/each}}
             </div>
         </div>
+
+        <p><strong>{{localize "Rolls.Bonus"}}:</strong> {{roll.bonus}}</p>
         
         <p><strong>{{localize "Rolls.Target"}}:</strong> {{roll.target}}</p>
         
-        <p><strong>{{localize "Rolls.Bonus"}}:</strong> {{roll.bonus}}</p>
-
         <p><strong>{{localize "RUNESCAPE_KINGDOMS.SheetLabels.Attribute"}}:</strong> {{localize (lookup config.attributes attributeKey)}}</p>
     </div>
 </div>

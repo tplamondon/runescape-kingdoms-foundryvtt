@@ -1,0 +1,12 @@
+<form class="flexcol" autocomplete="off">
+ <select name="attribute">
+    {{#each @root.attributes as |attribute|}}
+        {{log attribute}}
+        <option value="{{attribute}}">{{localize (lookup @root.config.attributes attribute)}}</option>
+    {{/each}}
+ </select>
+ <div>
+    <label for="bonus">{{localize "Rolls.Bonus"}}</label>
+    <input class="attribute-number-text" type="text" name="bonus" value="0" data-dtype="Number" />
+</div>
+</form>
