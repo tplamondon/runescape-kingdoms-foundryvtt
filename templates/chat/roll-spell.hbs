@@ -10,6 +10,7 @@
         </div>
         {{#if extra.spell.system.hasDamage}}
             <div class="spell-damages">
+                <h3>{{localize "Rolls.Damage"}}</h3>
                 {{#each extra.spell.system.damageTypes as |damage key| }}
                     {{log "roll-spells.hbs"}}
                     {{log damage.value}}
@@ -17,7 +18,7 @@
                     {{log (greater damage.value 0)}}
                     {{#if (greater damage.value 0)}}
                         <div class="spell-damage {{key}}">
-                            {{damage.value}}
+                            {{localize (lookup  @root.config.spellDamage key)}}: {{damage.value}}
                         </div>
                     {{/if}}
                 {{/each}}
