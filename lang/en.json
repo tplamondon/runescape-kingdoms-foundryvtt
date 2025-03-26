@@ -39,7 +39,10 @@
       "Attribute": "Attribute",
       "Skill": "Skill",
       "Biography": "Biography",
-      "Backgrounds": "Backgrounds"
+      "Backgrounds": "Backgrounds",
+      "Spells": "Spells",
+      "Prayers": "Prayers",
+      "Enable": "Enable"
     },
     "Item": {
       "Spell": {
@@ -63,6 +66,10 @@
           "earth": "Earth",
           "fire": "Fire"
         }
+      },
+      "Prayer": {
+        "prayers": "Prayers",
+        "add": "Add Prayer"
       }
     },
     "Effect": {

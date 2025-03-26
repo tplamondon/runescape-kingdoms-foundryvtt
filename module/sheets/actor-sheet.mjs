@@ -163,9 +163,13 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     // Add Inventory Item
     html.on("click", ".item-create", this._onItemCreate.bind(this));
 
+    // toggle enabled (prayers)
+    html.on("click", ".item-enable", this._onItemEnable.bind(this));
+
     // Delete Inventory Item
     html.on("click", ".item-delete", (ev) => {
       const li = $(ev.currentTarget).parents(".item");
+      console.log("context", context);
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
       li.slideUp(200, () => this.render(false));
@@ -222,6 +226,16 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
 
     // Finally, create the item!
     return await Item.create(itemData, { parent: this.actor });
+  }
+
+  async _onItemEnable(event) {
+    event.preventDefault();
+    const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.items.get(li.data("itemId"));
+    // see https://foundryvtt.wiki/en/development/api/document for how to use the update method
+    await item.update({ "system.enabled": !item.system.enabled });
+    // rerender sheet
+    this.render();
   }
 
   async _onRollSkill(event) {
