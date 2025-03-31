@@ -1,5 +1,9 @@
 import { rollToChat, createRollDialogueV2, createChatData } from "../helpers/chatFunctions.mjs";
-import { onManageActiveEffect, prepareActiveEffectCategories } from "../helpers/effects.mjs";
+import {
+  onManageActiveEffect,
+  prepareActiveEffectCategories,
+  toggleEffectsOnItemToggle,
+} from "../helpers/effects.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -169,7 +173,6 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     // Delete Inventory Item
     html.on("click", ".item-delete", (ev) => {
       const li = $(ev.currentTarget).parents(".item");
-      console.log("context", context);
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
       li.slideUp(200, () => this.render(false));
@@ -232,8 +235,11 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     event.preventDefault();
     const li = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(li.data("itemId"));
+    const enabled = !item.system.enabled;
     // see https://foundryvtt.wiki/en/development/api/document for how to use the update method
-    await item.update({ "system.enabled": !item.system.enabled });
+    await item.update({ "system.enabled": enabled });
+    //toggle effects
+    await toggleEffectsOnItemToggle(item, enabled);
     // rerender sheet
     this.render();
   }
@@ -319,7 +325,6 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
         spell: spellItem,
       }
     );
-    console.debug("spell item", spellItem);
 
     rollToChat(chatData, "spell");
   }

@@ -63,3 +63,12 @@ export function prepareActiveEffectCategories(effects) {
   }
   return categories;
 }
+
+export async function toggleEffectsOnItemToggle(item, enabled) {
+  const effects = item.effects;
+  await Promise.all(
+    effects.map(async (effect) => {
+      await effect.update({ disabled: !enabled });
+    })
+  );
+}
