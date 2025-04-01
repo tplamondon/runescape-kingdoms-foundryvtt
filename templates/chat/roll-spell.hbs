@@ -1,7 +1,6 @@
 <div class="" data-actor-id="{{ownerId}}" {{#if tokenId}} data-token-id="{{tokenId}}"{{/if}}>
     <div class="spell-roll">
         {{> "systems/runescape-kingdoms/templates/chat/parts/roll-base.hbs"}}
-        {{!-- TODO input spell damage and description --}}
 
         <div class="spell-description">
             {{!-- triple brackets to not escape HTML --}}
@@ -12,10 +11,6 @@
             <div class="spell-damages">
                 <h3>{{localize "Rolls.Damage"}}</h3>
                 {{#each extra.spell.system.damageTypes as |damage key| }}
-                    {{log "roll-spells.hbs"}}
-                    {{log damage.value}}
-                    {{log key}}
-                    {{log (greater damage.value 0)}}
                     {{#if (greater damage.value 0)}}
                         <div class="spell-damage {{key}}">
                             {{localize (lookup  @root.config.spellDamage key)}}: {{damage.value}}

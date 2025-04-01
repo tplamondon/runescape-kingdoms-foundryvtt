@@ -1,0 +1,11 @@
+<div class="" data-actor-id="{{ownerId}}" {{#if tokenId}} data-token-id="{{tokenId}}"{{/if}}>
+    <div class="spell-roll">
+        {{> "systems/runescape-kingdoms/templates/chat/parts/roll-base.hbs"}}
+
+        <div class="spell-description">
+            {{!-- triple brackets to not escape HTML --}}
+            {{!-- description of the spell --}}
+            {{{extra.prayer.system.description}}}
+        </div>
+    </div>
+</div>

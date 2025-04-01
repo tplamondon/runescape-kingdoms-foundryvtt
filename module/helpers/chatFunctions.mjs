@@ -83,6 +83,11 @@ export async function rollToChat(rollData, type) {
       "systems/runescape-kingdoms/templates/chat/roll-spell.hbs",
       rollData
     );
+  } else if (type === "prayer") {
+    html = await renderTemplate(
+      "systems/runescape-kingdoms/templates/chat/roll-prayer.hbs",
+      rollData
+    );
   }
 
   let chatData = {

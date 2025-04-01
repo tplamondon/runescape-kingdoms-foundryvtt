@@ -42,7 +42,8 @@
       "Backgrounds": "Backgrounds",
       "Spells": "Spells",
       "Prayers": "Prayers",
-      "Enable": "Enable"
+      "Enable": "Enable",
+      "NumTurns": "Number of Turns"
     },
     "Item": {
       "Spell": {

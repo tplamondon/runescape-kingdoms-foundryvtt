@@ -191,7 +191,8 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     // Rollable abilities/skills
     html.on("click", ".rollable-attribute", this._onRoll.bind(this));
     html.on("click", ".rollable-skill", this._onRollSkill.bind(this));
-    html.on("click", ".rollable-spell", this._onRollSpell.bind(this));
+    html.on("click", ".rollable-spell", this._onRollSpellPrayer.bind(this, "spell"));
+    html.on("click", ".rollable-prayer", this._onRollSpellPrayer.bind(this, "prayer"));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -287,21 +288,52 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     rollToChat(chatData, "skill");
   }
 
-  async _onRollSpell(event) {
+  async _onRollSpellPrayer(type, event) {
     event.preventDefault();
 
     const dataset = event.currentTarget.dataset;
 
-    // get the spell item object
-    /**
-     * @type Object
-     * @property {RunescapeKingdomsSpell} system contains all variables from this class and the base class (RunescapeKingdomsItemBase)
-     */
-    const spellItem = this.actor.items.get(dataset.itemId);
+    // get the spell or prayer item object
+    const spellPrayerItem = this.actor.items.get(dataset.itemId);
 
     // create and display new roll dialogue and get the returned values
-    const rollDialogue = await createRollDialogueV2(["int"], spellItem.name);
+    const rollDialogue = await createRollDialogueV2(["int"], spellPrayerItem.name);
+    if (type === "prayer") {
+      await this._onRollPrayer(spellPrayerItem, rollDialogue);
+    } else if (type === "spell") {
+      await this._onRollSpell(spellPrayerItem, rollDialogue);
+    }
+  }
 
+  async _onRollPrayer(prayerItem, rollDialogue) {
+    // get roll target (roll <= this to pass)
+    //prayer rolls are always prayer skill + int attribute
+    const rollTarget =
+      this.actor.system.skills.pray.value +
+      this.actor.system.attributes[rollDialogue.attribute].value;
+
+    // handle roll
+    let roll = new Roll(`${rollDialogue.diceRoll} + @bonus`, {
+      bonus: rollDialogue.bonus,
+      target: rollTarget,
+    });
+    await roll.evaluate();
+
+    let chatData = createChatData(
+      this.actor,
+      game.i18n.localize(prayerItem.name), //if we can localise?
+      roll,
+      rollDialogue,
+      rollTarget,
+      {
+        prayer: prayerItem,
+      }
+    );
+
+    rollToChat(chatData, "prayer");
+  }
+
+  async _onRollSpell(spellItem, rollDialogue) {
     // get roll target (roll <= this to pass)
     //spell rolls are always magick skill + int attribute
     const rollTarget =
