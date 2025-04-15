@@ -1,4 +1,4 @@
-import RunescapeKingdomsDataModel from "./base-model.mjs";
+import RunescapeKingdomsDataModel from "../base-model.mjs";
 
 export default class RunescapeKingdomsActorBase extends RunescapeKingdomsDataModel {
   static defineSchema() {

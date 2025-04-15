@@ -1,7 +1,6 @@
-import RunescapeKingdomsDataModel from "./base-model.mjs";
+import RunescapeKingdomsDataModel from "../base-model.mjs";
 
 export default class RunescapeKingdomsItemBase extends RunescapeKingdomsDataModel {
-
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = {};
@@ -10,5 +9,4 @@ export default class RunescapeKingdomsItemBase extends RunescapeKingdomsDataMode
 
     return schema;
   }
-
 }

@@ -100,13 +100,29 @@ Handlebars.registerHelper("greater", function (a, b) {
   return a > b;
 });
 
+Handlebars.registerHelper("localiseArg", function (str, obj) {
+  // translation.json should have format of "... {key1} ... {key2} ..."
+  return game.i18n.format(str, obj);
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once("ready", function () {
-  // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
+Hooks.once("setup", async function () {
+  game.settings.register("runescape-kingdoms", "messageFlags", {
+    name: "Message Flags",
+    scope: "world",
+    config: false,
+    default: {},
+    type: Object,
+  });
+  console.log("runescape-kingdoms module settings enabled");
+
+  //save message flags to game settings on render
+  Hooks.on("renderChatMessage", async (message, html, messageData) => {
+    // TODO?
+  });
 });
 
 /* -------------------------------------------- */

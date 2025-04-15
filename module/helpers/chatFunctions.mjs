@@ -8,13 +8,14 @@ import { isCritical } from "./rollHelpers.mjs";
  * @param {Number} rollTarget the target
  * @returns
  */
-export function rollToChatRollObject(roll, rollDialogue, rollTarget) {
+export async function rollToChatRollObject(roll, rollDialogue, rollTarget) {
   return {
     result: roll.total,
     bonus: rollDialogue.bonus,
     dice: roll.terms.find((c) => (c.class = "Die")).results,
     target: rollTarget,
     roll: roll,
+    resultRender: await roll.render(),
   };
 }
 
@@ -28,7 +29,7 @@ export function rollToChatRollObject(roll, rollDialogue, rollTarget) {
  * @param {Object} extra object with extra information you may wish to include for specific types
  * @returns
  */
-export function createChatData(actor, chatTitle, roll, rollDialogue, rollTarget, extra) {
+export async function createChatData(actor, chatTitle, roll, rollDialogue, rollTarget, extra) {
   let chatData = {
     speaker: ChatMessage.getSpeaker({ actor: actor }),
     rollTitle: chatTitle,
@@ -36,7 +37,7 @@ export function createChatData(actor, chatTitle, roll, rollDialogue, rollTarget,
     // critical if all 3 dice results were the same
     // get only active die, the check that every active result's value is equal to the first one's
     isCritical: isCritical(roll),
-    roll: rollToChatRollObject(roll, rollDialogue, rollTarget),
+    roll: await rollToChatRollObject(roll, rollDialogue, rollTarget),
     attributeKey: rollDialogue.attribute,
     config: CONFIG,
     extra: extra,
@@ -72,6 +73,7 @@ export async function rollToChat(rollData, type) {
   }
 
   // create html
+  // TODO the rollData should really just contain roll.render() result to shove into the html
   let html;
   if (type === "skill") {
     html = await renderTemplate(
@@ -96,6 +98,12 @@ export async function rollToChat(rollData, type) {
     rolls: rollData.roll.roll,
     content: html,
     sound: "sounds/dice.wav",
+    // flags: {
+    //   "runescape-kingdoms": {
+    //     rollHTML: await rollData.roll.roll.render(),
+    //     messageType: type,
+    //   },
+    // },
   };
 
   if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
@@ -103,7 +111,7 @@ export async function rollToChat(rollData, type) {
   } else if (chatData.rollMode === "selfroll") {
     chatData.whisper = [game.user];
   }
-  ChatMessage.create(chatData);
+  await ChatMessage.create(chatData);
 }
 
 /**

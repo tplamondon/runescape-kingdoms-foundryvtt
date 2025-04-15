@@ -1,7 +1,6 @@
 import RunescapeKingdomsItemBase from "./base-item.mjs";
 
 export default class RunescapeKingdomsPrayer extends RunescapeKingdomsItemBase {
-  // TODO find a way to enable/disable prayers effects when they're enabled/disabled
   // enable/disable similar to equipping items like DND?
 
   static defineSchema() {

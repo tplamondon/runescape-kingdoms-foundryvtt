@@ -1,7 +1,6 @@
 <form class="flexcol" autocomplete="off">
  <select name="attribute">
     {{#each @root.attributes as |attribute|}}
-        {{log attribute}}
         <option value="{{attribute}}">{{localize (lookup @root.config.attributes attribute)}}</option>
     {{/each}}
  </select>

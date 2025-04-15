@@ -277,7 +277,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     await roll.evaluate();
 
     // create chat data and send to chat
-    let chatData = createChatData(
+    let chatData = await createChatData(
       this.actor,
       game.i18n.localize(CONFIG.RUNESCAPE_KINGDOMS.skills[skillKey]),
       roll,
@@ -319,7 +319,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     });
     await roll.evaluate();
 
-    let chatData = createChatData(
+    let chatData = await createChatData(
       this.actor,
       game.i18n.localize(prayerItem.name), //if we can localise?
       roll,
@@ -327,6 +327,8 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       rollTarget,
       {
         prayer: prayerItem,
+        actor: this.actor,
+        translationObject: { time: prayerItem.system.turns },
       }
     );
 
@@ -347,7 +349,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     });
     await roll.evaluate();
 
-    let chatData = createChatData(
+    let chatData = await createChatData(
       this.actor,
       game.i18n.localize(spellItem.name), //if we can localise?
       roll,

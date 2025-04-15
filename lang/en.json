@@ -43,7 +43,8 @@
       "Spells": "Spells",
       "Prayers": "Prayers",
       "Enable": "Enable",
-      "NumTurns": "Number of Turns"
+      "NumTurns": "Number of Turns",
+      "ActiveForXTurns": "Active for {time} turns"
     },
     "Item": {
       "Spell": {
