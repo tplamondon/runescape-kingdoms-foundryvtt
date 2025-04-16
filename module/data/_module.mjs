@@ -10,3 +10,7 @@ export { default as RunescapeKingdomsFeature } from "./item/item-feature.mjs";
 export { default as RunescapeKingdomsSpell } from "./item/item-spell.mjs";
 export { default as RunescapeKingdomsPrayer } from "./item/item-prayer.mjs";
 export { default as RunescapeKingdomsBackground } from "./item/item-background.mjs";
+
+// export Messages
+export { default as RunescapeKingdomsMessageBase } from "./message/base-message.mjs";
+export { default as RunesapeKingdomsMessagePrayer } from "./message/message-prayer.mjs";

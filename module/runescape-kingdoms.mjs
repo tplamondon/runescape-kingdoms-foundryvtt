@@ -1,6 +1,7 @@
 // Import document classes.
 import { RunescapeKingdomsActor } from "./documents/actor.mjs";
 import { RunescapeKingdomsItem } from "./documents/item.mjs";
+import { RunescapeKingdomsMessage } from "./documents/chat-message.mjs";
 // Import sheet classes.
 import { RunescapeKingdomsActorSheet } from "./sheets/actor-sheet.mjs";
 import { RunescapeKingdomsItemSheet } from "./sheets/item-sheet.mjs";
@@ -9,6 +10,7 @@ import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { RUNESCAPE_KINGDOMS } from "./helpers/config.mjs";
 // Import DataModel classes
 import * as models from "./data/_module.mjs";
+import * as rsHooks from "./hooks/_module.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -20,6 +22,7 @@ Hooks.once("init", function () {
   game.runescapekingdoms = {
     RunescapeKingdomsActor,
     RunescapeKingdomsItem,
+    RunescapeKingdomsMessage,
     rollItemMacro,
   };
 
@@ -52,6 +55,11 @@ Hooks.once("init", function () {
     spell: models.RunescapeKingdomsSpell,
     prayer: models.RunescapeKingdomsPrayer,
     background: models.RunescapeKingdomsBackground,
+  };
+
+  CONFIG.ChatMessage.documentClass = RunescapeKingdomsMessage;
+  CONFIG.ChatMessage.dataModels = {
+    prayer: models.RunesapeKingdomsMessagePrayer,
   };
 
   // Active Effects are never copied to the Actor,
@@ -118,12 +126,12 @@ Hooks.once("setup", async function () {
     type: Object,
   });
   console.log("runescape-kingdoms module settings enabled");
-
-  //save message flags to game settings on render
-  Hooks.on("renderChatMessage", async (message, html, messageData) => {
-    // TODO?
-  });
 });
+
+/**
+ * Rendering hooks
+ */
+Hooks.on("renderChatMessage", rsHooks.renderChatMessage);
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */

@@ -18,15 +18,6 @@
     <div class="roll-results">
         <p><strong>{{localize "Rolls.Result"}}:</strong> {{roll.result}} ({{roll.roll.result}})</p>
         {{{roll.resultRender}}}
-        {{!-- <div class="dice-values-replace">
-            <div class="dice-values">
-                {{#each roll.dice as |die|}}
-                    <span class="dice-value {{#unless die.active}}discarded{{/unless}}" >
-                        <span class="dice-text">{{die.result}}</span>
-                    </span>
-                {{/each}}
-            </div>
-        </div> --}}
     </div>
 
     <p><strong>{{localize "Rolls.Bonus"}}:</strong> {{roll.bonus}}</p>

@@ -2,13 +2,35 @@ import { RUNESCAPE_KINGDOMS as CONFIG } from "./config.mjs";
 import { isCritical } from "./rollHelpers.mjs";
 
 /**
+ * @typedef {Object} ChatDataObject
+ * @property {Object} rollData.speaker the speaker
+ * @property {string} rollData.rollTitle the localised name for the chat title
+ * @property {boolean} rollData.isSuccess if roll was a success
+ * @property {boolean} rollData.isCritical if it was a critical
+ * @property {string} rollData.attributeKey the attribute key. RUNESCAPE_KINGDOMS.attributes in config.mjs
+ * @property {Object} rollData.config CONFIG.RUNESCAPE_KINGDOMS (easier to get from outside the function)
+ * @property {Object} rollData.extra Extra information to pass to the sheet template (type specific generally)
+ * @property {RollObject} rollData.roll The main roll used
+ */
+
+/**
+ * @typedef {Object} RollObject
+ * @property {number} result the total result
+ * @property {number} bonus the bonus/modifier to the dice roll
+ * @property {number} dice the die array
+ * @property {number} target the target to get <=
+ * @property {Roll} roll the roll object
+ * @property {string} resultRender the rendered html
+ */
+
+/**
  *
  * @param {Object} roll roll object
  * @param {Object} rollDialogue dialoguev2 from roll
  * @param {Number} rollTarget the target
- * @returns
+ * @returns {RollObject}
  */
-export async function rollToChatRollObject(roll, rollDialogue, rollTarget) {
+async function rollToChatRollObject(roll, rollDialogue, rollTarget) {
   return {
     result: roll.total,
     bonus: rollDialogue.bonus,
@@ -27,7 +49,7 @@ export async function rollToChatRollObject(roll, rollDialogue, rollTarget) {
  * @param {*} rollDialogue
  * @param {Number} rollTarget
  * @param {Object} extra object with extra information you may wish to include for specific types
- * @returns
+ * @returns {ChatDataObject}
  */
 export async function createChatData(actor, chatTitle, roll, rollDialogue, rollTarget, extra) {
   let chatData = {
@@ -37,32 +59,18 @@ export async function createChatData(actor, chatTitle, roll, rollDialogue, rollT
     // critical if all 3 dice results were the same
     // get only active die, the check that every active result's value is equal to the first one's
     isCritical: isCritical(roll),
-    roll: await rollToChatRollObject(roll, rollDialogue, rollTarget),
     attributeKey: rollDialogue.attribute,
     config: CONFIG,
     extra: extra,
+    roll: await rollToChatRollObject(roll, rollDialogue, rollTarget),
   };
   return chatData;
 }
 
-//--------------------------------------------------------------------------------------//
-//                                   Async Functions                                    //
-//--------------------------------------------------------------------------------------//
-
 /**
  *
- * @param {Object} rollData
- * @param {Object} rollData.speaker the speaker
- * @param {string} rollData.chatTitle the localised name for the chat title
- * @param {boolean} rollData.isSuccess if roll was a success
- * @param {string} rollData.attributeKey the attribute key. RUNESCAPE_KINGDOMS.attributes in config.mjs
- * @param {Object} rollData.config CONFIG.RUNESCAPE_KINGDOMS (easier to get from outside the function)
- * @param {Object} rollData.roll
- * @param {number} rollData.roll.result the total result
- * @param {number} rollData.roll.bonus the bonus/modifier to the dice roll
- * @param {number} rollData.roll.dice the die array
- * @param {number} rollData.roll.target the target to get <=
- * @param {Object} rollData.roll.roll the roll object
+ * @param {ChatDataObject} rollData
+ * @param {string} type The type of roll
  */
 export async function rollToChat(rollData, type) {
   // get speaker info and append to rollData
@@ -98,12 +106,8 @@ export async function rollToChat(rollData, type) {
     rolls: rollData.roll.roll,
     content: html,
     sound: "sounds/dice.wav",
-    // flags: {
-    //   "runescape-kingdoms": {
-    //     rollHTML: await rollData.roll.roll.render(),
-    //     messageType: type,
-    //   },
-    // },
+    type: type,
+    flags: rollData.extra, //pass this as well
   };
 
   if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
@@ -111,6 +115,7 @@ export async function rollToChat(rollData, type) {
   } else if (chatData.rollMode === "selfroll") {
     chatData.whisper = [game.user];
   }
+
   await ChatMessage.create(chatData);
 }
 

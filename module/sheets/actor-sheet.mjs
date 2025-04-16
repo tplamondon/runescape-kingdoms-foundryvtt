@@ -283,7 +283,9 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       roll,
       rollDialogue,
       rollTarget,
-      null
+      {
+        actor: this.actor,
+      }
     );
     rollToChat(chatData, "skill");
   }
@@ -329,6 +331,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
         prayer: prayerItem,
         actor: this.actor,
         translationObject: { time: prayerItem.system.turns },
+        turnRollHTML: await (await new Roll(prayerItem.system.turns).evaluate()).render(),
       }
     );
 
@@ -356,6 +359,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       rollDialogue,
       rollTarget,
       {
+        actor: this.actor,
         spell: spellItem,
       }
     );
