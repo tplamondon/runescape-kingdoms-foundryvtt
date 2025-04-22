@@ -178,6 +178,15 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
       li.slideUp(200, () => this.render(false));
     });
 
+    // long rest
+    html.on("click", ".longrest", (ev) => {
+      this.actor.update({
+        "system.health.value": this.actor.system.health.max,
+        "system.prayerPoints.value": this.actor.system.prayerPoints.max,
+        "system.summoningPoints.value": this.actor.system.summoningPoints.max,
+      });
+    });
+
     // Active Effect management
     html.on("click", ".effect-control", (ev) => {
       const row = ev.currentTarget.closest("li");

@@ -101,3 +101,19 @@
     // background-color: colours.$shade-light; (this is already done elsewhere apparently?)
   }
 }
+
+.character-buttons {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .character-button {
+    margin: auto 10px;
+    border: solid;
+    border-width: 2px;
+    padding: 5px;
+    background: colours.$shade-light;
+    border-color: colours.$c-border-2;
+    // cursor: pointer;
+  }
+}
