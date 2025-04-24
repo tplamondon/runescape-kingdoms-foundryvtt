@@ -1,0 +1,17 @@
+<div class="item-chat">
+
+    <div class="item-header">
+        <img src="{{img}}" alt="item image" width="35" height="35" class="item-image">
+        <h1 class="item-name">{{name}}</h1>
+    </div>
+    
+    <div class="item-description">
+        {{{system.description}}}
+    </div>
+
+    {{#if system.isRollable}}
+        <div class="item-roll-description">
+            <span><strong>{{localize "Rolls.Roll Formula"}}</strong>: {{system.formula}}</span>
+        </div>
+    {{/if}}
+</div>

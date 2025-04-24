@@ -43,3 +43,21 @@
         background-color: colours.$shade-light;
     }
 }
+
+.item-chat {
+    .item-header {
+        display: flex;
+        .item-image {
+            margin-right: 5px;
+        }
+    }
+    .item-description {
+        // background-color: colours.$shade-light;
+        background-color: inherit;
+    }
+    .item-roll-description {
+        background-color: inherit;
+    }
+}
+
+

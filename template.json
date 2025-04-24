@@ -6,6 +6,6 @@
     "types": ["item", "feature", "spell", "prayer", "background"]
   },
   "ChatMessage": {
-    "types": ["base", "prayer", "spell", "skill"]
+    "types": ["prayer", "spell", "skill"]
   }
 }

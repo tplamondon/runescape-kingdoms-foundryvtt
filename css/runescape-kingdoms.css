@@ -296,6 +296,19 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+.item-chat .item-header {
+  display: flex;
+}
+.item-chat .item-header .item-image {
+  margin-right: 5px;
+}
+.item-chat .item-description {
+  background-color: inherit;
+}
+.item-chat .item-roll-description {
+  background-color: inherit;
+}
+
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;

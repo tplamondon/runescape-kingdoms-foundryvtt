@@ -81,7 +81,6 @@ export async function rollToChat(rollData, type) {
   }
 
   // create html
-  // TODO the rollData should really just contain roll.render() result to shove into the html
   let html;
   if (type === "skill") {
     html = await renderTemplate(
@@ -174,4 +173,22 @@ export async function createRollDialogueV2(attributes, title) {
     ],
   });
   return rollDialogue;
+}
+
+export async function descriptionToChat(actor, item) {
+  let html = await renderTemplate(
+    "systems/runescape-kingdoms/templates/chat/chat-description.hbs",
+    item
+  );
+  let chatData = {
+    user: game.user.id,
+    speaker: ChatMessage.getSpeaker({ actor: actor }),
+    content: html,
+  };
+  if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
+    chatData.whisper = ChatMessage.getWhisperRecipients("GM");
+  } else if (chatData.rollMode === "selfroll") {
+    chatData.whisper = [game.user];
+  }
+  await ChatMessage.create(chatData);
 }

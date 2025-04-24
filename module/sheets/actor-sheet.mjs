@@ -1,4 +1,9 @@
-import { rollToChat, createRollDialogueV2, createChatData } from "../helpers/chatFunctions.mjs";
+import {
+  rollToChat,
+  createRollDialogueV2,
+  createChatData,
+  descriptionToChat,
+} from "../helpers/chatFunctions.mjs";
 import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
@@ -195,6 +200,14 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
           ? this.actor
           : this.actor.items.get(row.dataset.parentId);
       onManageActiveEffect(ev, document);
+    });
+
+    // put description to chat
+    html.on("click", ".rollable-description", (ev) => {
+      ev.preventDefault();
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      descriptionToChat(this.actor, item);
     });
 
     // Rollable abilities/skills
