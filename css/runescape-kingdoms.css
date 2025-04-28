@@ -196,13 +196,19 @@
 }
 .items-list .item-controls {
   display: flex;
-  flex: 0 0 100px;
+  flex: 0 0 150px;
   justify-content: flex-end;
 }
 .items-list .item-controls a {
   font-size: 12px;
   text-align: center;
   margin: 0 6px;
+}
+.items-list .item-controls .item-count {
+  margin-left: 1rem;
+}
+.items-list .item-controls .item-count.item-over-max {
+  color: #BA0000;
 }
 .items-list .item {
   align-items: center;

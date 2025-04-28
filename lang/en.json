@@ -43,6 +43,7 @@
       "Spells": "Spells",
       "Prayers": "Prayers",
       "Enable": "Enable",
+      "Equip": "Equip",
       "NumTurns": "Number of Turns",
       "ActiveForXTurns": "Active for {time} turns"
     },

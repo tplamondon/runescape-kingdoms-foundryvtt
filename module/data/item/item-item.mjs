@@ -12,11 +12,14 @@ export default class RunescapeKingdomsItem extends RunescapeKingdomsItemBase {
 
     // Break down roll formula into three independent fields
     schema.roll = new fields.SchemaField({
-      diceNum: new fields.NumberField({ ...nonRequiredInteger, initial: 1, min: 1 }),
-      diceSize: new fields.StringField({ initial: "d6" }),
+      diceNum: new fields.NumberField({ ...nonRequiredInteger, initial: null, min: 1 }),
+      diceSize: new fields.StringField({ initial: "" }),
       // diceBonus: new fields.StringField({ initial: "+@str.value+ceil(@lvl / 2)" }), //don't use @lvl as is removed
       diceBonus: new fields.StringField({ initial: "" }),
     });
+
+    // if item is equipped
+    schema.enabled = new fields.BooleanField({ required: true, nullable: false, initial: false });
 
     schema.formula = new fields.StringField({ blank: true });
 
