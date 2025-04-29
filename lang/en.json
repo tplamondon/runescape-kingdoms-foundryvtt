@@ -44,6 +44,8 @@
       "Prayers": "Prayers",
       "Enable": "Enable",
       "Equip": "Equip",
+      "Inventory": "Inventory",
+      "Equipped": "Equipped",
       "NumTurns": "Number of Turns",
       "ActiveForXTurns": "Active for {time} turns"
     },

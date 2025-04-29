@@ -108,6 +108,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const gear = [];
+    const equipped = [];
     const features = [];
     const backgrounds = [];
     const spells = {
@@ -121,7 +122,10 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
     for (let i of context.items) {
       i.img = i.img || Item.DEFAULT_ICON;
       // Append to gear.
-      if (i.type === "item") {
+      if (i.type === "item" && i.system.enabled === true) {
+        equipped.push(i);
+      } else if (i.type === "item") {
+        console.debug("item", i);
         gear.push(i);
       }
       // Append to features.
@@ -146,6 +150,7 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
 
     // Assign and return
     context.gear = gear;
+    context.equippedGear = equipped;
     context.features = features;
     context.spells = spells;
     context.prayers = prayers;

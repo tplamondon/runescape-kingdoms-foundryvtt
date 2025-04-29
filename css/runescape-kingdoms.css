@@ -82,7 +82,7 @@
   height: 4em;
 }
 .attributes .attribute .attribute-number-wrap .attribute-number {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.0509803922);
   border: solid;
   border-color: #7a7971;
   border-width: 5px;
@@ -125,7 +125,7 @@
   border: solid;
   border-color: #7a7971;
   border-width: 1px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.0509803922);
 }
 .character-description .charInfo {
   border: none;
@@ -142,7 +142,7 @@
   border: solid;
   border-width: 2px;
   padding: 5px;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.0509803922);
   border-color: #191813;
 }
 
@@ -169,7 +169,7 @@
 
 .items-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 10px 0;
   padding: 0;
   overflow-y: auto;
   scrollbar-width: thin;
@@ -277,7 +277,7 @@
   color: #BA0000;
 }
 .skill-roll .roll-results .dice-values, .spell-roll .roll-results .dice-values {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.0509803922);
   display: flex;
   align-items: center;
   padding: 0.3em 0.5em;
@@ -285,7 +285,7 @@
   justify-content: space-evenly;
 }
 .skill-roll .roll-results .dice-values .dice-value, .spell-roll .roll-results .dice-values .dice-value {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.0509803922);
   font-size: 1.1em;
   margin-left: 0.3em;
   margin-right: 0.3em;
@@ -299,7 +299,7 @@
 }
 
 .spell-roll .spell-description {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.0509803922);
 }
 
 .item-chat .item-header {
