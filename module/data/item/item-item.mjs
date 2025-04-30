@@ -23,6 +23,8 @@ export default class RunescapeKingdomsItem extends RunescapeKingdomsItemBase {
 
     schema.formula = new fields.StringField({ blank: true });
 
+    schema.soak = new fields.NumberField({ ...nonRequiredInteger, initial: null });
+
     return schema;
   }
 

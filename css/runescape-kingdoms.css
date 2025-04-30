@@ -523,4 +523,8 @@
   text-align: center;
 }
 
+.flex {
+  display: flex;
+}
+
 /* Styles limited to runescape-kingdoms sheets */

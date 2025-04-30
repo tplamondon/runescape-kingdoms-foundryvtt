@@ -98,6 +98,15 @@ export class RunescapeKingdomsActorSheet extends ActorSheet {
   _prepareCharacterData(context) {
     // This is where you can enrich character-specific editor fields
     // or setup anything else that's specific to this type
+
+    // add soak of gear
+    let soak = 0;
+    for (let i of context.items) {
+      if (i.type === "item" && i.system.enabled === true && i.system.soak) {
+        soak += i.system.soak;
+      }
+    }
+    context.soak = soak;
   }
 
   /**

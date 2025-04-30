@@ -47,7 +47,9 @@
       "Inventory": "Inventory",
       "Equipped": "Equipped",
       "NumTurns": "Number of Turns",
-      "ActiveForXTurns": "Active for {time} turns"
+      "ActiveForXTurns": "Active for {time} turns",
+      "Soak": "Soak",
+      "ArmourValue": "Armour Value"
     },
     "Item": {
       "Spell": {
@@ -103,7 +105,10 @@
     "Roll": "Roll",
     "Target": "Target",
     "Damage": "Damage",
-    "Roll Formula": "Roll Formula"
+    "Roll Formula": "Roll Formula",
+    "Number of Dice": "Number of Dice",
+    "Die Size": "Die Size",
+    "Roll Modifier": "Roll Modifier"
   },
   
 
